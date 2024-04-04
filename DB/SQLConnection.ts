@@ -64,7 +64,7 @@ export const MYSQL = async function(){
       Fecha_mod   VARCHAR(100),
       Activo      TINYINT(1)  NOT NULL,
       INDEX (nombre),
-      PRIMARY KEY(id_cliente,Fecha_mod)
+      PRIMARY KEY(id_cliente,Nombre,Apellidos,Fecha_mod)
     ) `)
     console.log("tabla clientes creada");
     

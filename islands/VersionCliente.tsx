@@ -31,14 +31,14 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
             Nombre: nombre,
             Apellidos: apellidos,
             DNI: DNI,
-            Telefono: Telefono,
-            CP: Cp,
+            Telefono: Telefono|| 1,
+            CP: Cp || 1,
             Direccion: Direcion,
             Correo: Correp,
             Empresa: Empresa,
             Fecha_Alta:  newdata.v_actual!.Fecha_Alta,
             Fecha_Baja: "0",
-            Activo: 0
+            Activo: 1
         }
         
         
@@ -47,6 +47,8 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(cliente),
         })
+        console.log(await put.json());
+        
         const get = await fetch("/api/get",{
             method: "GET"
         })
@@ -83,12 +85,12 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
                                 <p>Nombre: {newdata.v_actual!.Nombre && newdata.v_actual!.Nombre}</p>
                                 <p>Apellidos: {newdata.v_actual!.Apellidos &&newdata.v_actual!.Apellidos}</p>
                                 <p>DNI:  {newdata.v_actual!.DNI &&newdata.v_actual!.DNI}</p>
-                                <p>Telefono:  {newdata.v_actual!.Telefono &&newdata.v_actual!.Telefono}</p>
+                                <p>Telefono:  {newdata.v_actual!.Telefono && newdata.v_actual!.Telefono!==1 && newdata.v_actual!.Telefono }</p>
                                 <p>Correo: {(newdata.v_actual!.Correo!=="null" && newdata.v_actual!.Correo) &&newdata.v_actual!.Correo}</p>
                                 <p>Direccion: {(newdata.v_actual!.Direccion!=="null" && newdata.v_actual!.Direccion) &&newdata.v_actual!.Direccion}</p>
                                 {newdata.v_actual!.Empresa===0 && <p>Empresa: No</p>}
                                 {newdata.v_actual!.Empresa===1 && <p>Empresa: Si</p>}
-                                <p>CP: {newdata.v_actual!.CP &&newdata.v_actual!.CP}</p>
+                                <p>CP: {newdata.v_actual!.CP && newdata.v_actual!.CP!==1 && newdata.v_actual!.CP}</p>
                                 <label for="Version:">Version:</label>
                                 <select value={JSON.stringify(newdata.v_actual)} label="Version:" onChange={(e)=>{change_v(e.currentTarget.value)}}> 
                                    {data.v_anteriores.length>0 && data.v_anteriores.map((v: Cliente)=>{

@@ -96,18 +96,18 @@ export const handler: Handlers = {
         
         const cl: Cliente= await req.json()
         const date = getdate(new Date())
-        console.log(date)
+        console.log(cl.Telefono)
         const cliente = {
             id_cliente: cl.id_cliente,
             Nombre: cl.Nombre,
             Apellidos: cl.Apellidos,
-            DNI: cl.DNI || null, 
-            Telefono: cl.Telefono || 0, 
-            CP: cl.CP || 0, 
+            DNI: cl.DNI ||  " ", 
+            Telefono: cl.Telefono || 1, 
+            CP: cl.CP || 1, 
             Direccion: cl.Direccion || " ",
             Correo: cl.Correo || " ",
-            Empresa: cl.Empresa || 0,
-            Fecha_Baja: cl.Fecha_Baja || 0,
+            Empresa: cl.Empresa || 1,
+            Fecha_Baja: cl.Fecha_Baja || 1,
             Fecha_mod: `${date}`, 
             Activo: 1,
         }
@@ -121,35 +121,27 @@ export const handler: Handlers = {
         
         const [_update] = await db.query(`
             UPDATE Clientes SET
-                ${clienteold.id_cliente ? `id_cliente='${clienteold.id_cliente}',` : ''}
-                ${clienteold.Nombre ? `Nombre='${clienteold.Nombre}',` : ''}
-                ${clienteold.Apellidos ? `Apellidos='${clienteold.Apellidos}',` : ''}
-                ${clienteold.DNI ? `DNI='${clienteold.DNI}',` : ''}
-                ${clienteold.Telefono !== null && clienteold.Telefono !== undefined ? `Telefono='${clienteold.Telefono}',` : ''}
-                ${clienteold.CP ? `CP='${clienteold.CP}',` : ''}
-                ${clienteold.Direccion ? `Direccion='${clienteold.Direccion}',` : ''}
-                ${clienteold.Correo ? `Correo='${clienteold.Correo}',` : ''}
                 Fecha_Baja='${date}',
                 Activo=0
-            WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';
+            WHERE  id_cliente='${cl.id_cliente}' AND Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';
         `);
         
         const response = await db.query(`
         INSERT INTO Clientes (id_cliente, Nombre, Apellidos, DNI, Telefono, CP, Direccion, Correo, Empresa, Fecha_Alta, Fecha_Baja, Fecha_mod, Activo ) 
         VALUES (
             '${clienteold.id_cliente}',
-            '${clienteold.Nombre}', 
-            '${clienteold.Apellidos}', 
-            ${cliente.DNI ? `'${cliente.DNI}'` : `'${clienteold.DNI}'`}, 
-            ${cliente.Telefono ? `'${cliente.Telefono}'` : `'${clienteold.Telefono}'`}, 
-            ${cliente.CP !== null && cliente.CP !== undefined ? `'${cliente.CP}'` : (clienteold.CP !== null && clienteold.CP !== undefined ? `'${clienteold.CP}'` : 'NULL')},
-            ${cliente.Direccion ? `'${cliente.Direccion}'` : `'${clienteold.Direccion}'`}, 
-            ${cliente.Correo ? `'${cliente.Correo}'` : `'${clienteold.Correo}'`}, 
-            ${cliente.Empresa}, 
+            '${clienteold.Nombre}',
+            '${clienteold.Apellidos}',
+            '${cliente.DNI}',
+            '${cliente.Telefono}', 
+            '${cliente.CP}',
+            '${cliente.Direccion}', 
+            '${cliente.Correo}', 
+            '${cliente.Empresa}', 
             '${clienteold.Fecha_Alta}', 
             '0', 
             '${date}', 
-            ${cliente.Activo}
+            '${cliente.Activo}'
         )
     `);
 
