@@ -87,7 +87,7 @@ export const handler: Handlers = {
         if(!req.body){
 
             return new Response("",{ 
-                headers: {"location": "/"},
+                headers: { Location: "/Clientes"},
                 status: 404
             })
         }
@@ -113,8 +113,8 @@ export const handler: Handlers = {
         }
         
         
-        const [results]=  await db.query(`SELECT * FROM Clientes WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}' AND Activo=1;`)
-        console.log(cliente);
+        const [results]=  await db.query(`SELECT * FROM Clientes WHERE  Nombre='${cliente.Nombre}' AND  Apellidos='${cliente.Apellidos}' AND Activo=1;`)
+
         
         //@ts-expect-error>
         const clienteold = results.at(0) 
@@ -145,8 +145,13 @@ export const handler: Handlers = {
         )
     `);
 
-    return new Response(JSON.stringify(response),{ 
-        headers: {"location": "/"},
+    const [results1]=  await db.query(`SELECT * FROM clientes WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';`)
+
+
+
+    return new Response(JSON.stringify(results1),{ 
+        
+        headers: {Location: `/`,},
         status: 200
     })
 

@@ -60,6 +60,20 @@ export const clmap = (data: Cliente[]): cluster_cliente[] => {
 
     return clients_formated
 }
+export const clmap1 = (data: Cliente[]): cluster_cliente => {
+    const cluster: cluster_cliente = {
+        id: 0,
+        v_anteriores: []
+    }
+    data.forEach((cl: Cliente) => {
+        if(cl.Activo===1){
+            cluster.v_actual=cl
+        }
+        cluster.v_anteriores.push(cl)
+    })
+
+    return cluster
+}
 
 export const cookie= (log?: string )=>{
     if(log){

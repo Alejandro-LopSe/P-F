@@ -24,4 +24,4 @@ export type cluster_cliente = {
   v_actual?: Cliente
   v_anteriores: Cliente[]
 }
-export let logged =false
+

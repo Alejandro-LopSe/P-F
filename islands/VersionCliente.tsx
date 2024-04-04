@@ -2,6 +2,7 @@ import { FunctionComponent } from "preact";
 import {Cliente} from "../types.ts"
 import { useState } from "preact/hooks";
 import { cluster_cliente } from "../types.ts";
+import { clmap, clmap1 } from "../funciones.ts";
 
 
 //@ts-expect-error-
@@ -44,21 +45,18 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
         
         const put = await fetch("/api/get",{
             method: "PUT",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+            Location: "/Clientes"},
             body: JSON.stringify(cliente),
         })
-        console.log(await put.json());
+        const x: Cliente[] = await put.json();
         
-        const get = await fetch("/api/get",{
-            method: "GET"
-        })
-        const getresponse: cluster_cliente[] = await get.json()
-        const newcli: cluster_cliente | undefined = getresponse.find((c: cluster_cliente)=>{
-            if(c.id===id)return true
-            return false
-        })
+        const getresponse: cluster_cliente = clmap1(x)
+
+        console.log(1,getresponse);
         
-        if(newcli)setnewdata(newcli)
+        
+        if(getresponse){setnewdata(getresponse)}
         
 
         setenable(!enable)
@@ -92,8 +90,11 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
                                 {newdata.v_actual!.Empresa===1 && <p>Empresa: Si</p>}
                                 <p>CP: {newdata.v_actual!.CP && newdata.v_actual!.CP!==1 && newdata.v_actual!.CP}</p>
                                 <label for="Version:">Version:</label>
+                                {console.log(JSON.stringify(newdata.v_actual))}
                                 <select value={JSON.stringify(newdata.v_actual)} label="Version:" onChange={(e)=>{change_v(e.currentTarget.value)}}> 
+                                    <option value={JSON.stringify(newdata.v_actual!)}>V-{"Last"}: {newdata.v_actual!.Fecha_mod}</option>
                                    {data.v_anteriores.length>0 && data.v_anteriores.map((v: Cliente)=>{
+                                    console.log(JSON.stringify(newdata.v_actual)===JSON.stringify(v));
                                     return (<option value={JSON.stringify(v)}>V-{it++}: {v.Fecha_mod}</option>)
                                    })}
                                 </select>

@@ -12,7 +12,6 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $api_get from "./routes/api/get.ts";
-import * as $api_handler from "./routes/api/handler.ts";
 import * as $api_loger from "./routes/api/loger.ts";
 import * as $index from "./routes/index.tsx";
 import * as $Addcliente from "./islands/Addcliente.tsx";
@@ -35,7 +34,6 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
     "./routes/api/get.ts": $api_get,
-    "./routes/api/handler.ts": $api_handler,
     "./routes/api/loger.ts": $api_loger,
     "./routes/index.tsx": $index,
   },
