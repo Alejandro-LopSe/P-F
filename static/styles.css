@@ -1,0 +1,130 @@
+body{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(255, 255, 255, 0.753);
+
+}
+.menu{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-style: groove;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-color: aliceblue;
+  a{
+    border-style: groove;
+    border-radius: 50px;
+    border-color: aliceblue;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    background-color: rgba(0, 100, 0, 0.815);
+  }
+  background-color: rgba(0, 102, 255, 0.753);
+}
+
+.clientes{
+  .check{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+  }
+  ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    li.activo{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 15%;
+      min-height: 100%;
+      background-color: rgba(0, 100, 0, 0.815);
+      border-style: groove;
+      border-radius: 20px;
+      border-color: aliceblue;
+      padding: 10px;
+      p{
+        font-size: small;
+        border-bottom: 2px inset rgba(0, 0, 0, 0.308);
+        padding: 2px;
+      }
+    }
+    li.inactivo{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-width: 10%;
+      min-height: 100%;
+      background-color: rgba(100, 98, 0, 0.815);
+      border-style: groove;
+      border-radius: 20px;
+      border-color: aliceblue;
+      padding: 10px;
+      p{
+        font-size: small;
+        border-bottom: 2px inset rgba(0, 0, 0, 0.308);
+        padding: 2px;
+      }
+    }
+    button{
+      padding: 3px;
+      width: fit-content;
+      align-self: center;
+      border-radius: 10px;
+      border-style: inset;
+      background-color: rgba(75, 75, 245, 0.753);
+    }
+  }
+}
+
+.addclientes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-style: inset;
+    padding: 15px;
+    background-color: rgba(0, 100, 0, 0.815);
+    border-radius: 10px;
+    border-color: aliceblue;
+    p{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 5px;
+    }
+    button{
+      margin: 10px;
+      padding: 3px;
+      width: fit-content;
+      border-radius: 10px;
+      border-style: inset;
+      background-color: rgba(75, 75, 245, 0.753);
+      align-self: flex-end;
+    }
+  }
+}
+
+.error{
+  color: rgb(255, 0, 0);
+}
