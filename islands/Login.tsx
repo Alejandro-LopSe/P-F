@@ -29,21 +29,20 @@ const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
     }
   }
   if(!loged){
-
-  return (
-    <form action="/" method="post">
-        <select name="usuario"  value ="Admin" onChange={(e)=>{setuser(e.currentTarget.value)}}>
-            <option value="Admin">Admin</option>
-            <option value="Espe">Esperanza</option>
-            <option value="Angel">Angel</option>
-            <option value="Jose">Jose</option>   
-        </select>    
-        <input name="password" placeholder="Contraseña" onBlur={(e)=>{setpass(e.currentTarget.value); seterror(""); }}></input>
-        <button type="submit" disabled={false} onClick={async (e)=>{}}>Log-in</button>
-        {error && error}
-    
-    </form>
-  );
+    return (
+      <form action="/" method="post">
+          <select name="usuario"  value ="Admin" onChange={(e)=>{setuser(e.currentTarget.value)}}>
+              <option value="Admin">Admin</option>
+              <option value="Espe">Esperanza</option>
+              <option value="Angel">Angel</option>
+              <option value="Jose">Jose</option>   
+          </select>    
+          <input name="password" placeholder="Contraseña" onBlur={(e)=>{setpass(e.currentTarget.value); seterror(""); }}></input>
+          <button type="submit" disabled={false} onClick={async (e)=>{}}>Log-in</button>
+          {error && error}
+      
+      </form>
+    );
   }else{
 
   return (

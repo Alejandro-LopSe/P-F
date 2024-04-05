@@ -1,23 +1,34 @@
 import mysql from "npm:mysql2@^2.3.3/promise";
 
-export const MYSQL = async function(){
-
-  /*const DB = await mysql.createConnection({  
+const usedb = async (dbtouse: number )=>{
+  if(dbtouse===1){
+    const DB = await mysql.createConnection({  
     host: "localhost",
     user: "root",
     password: "1974contrasena",
-  })*/
-  
-  const DB = await mysql.createConnection({  
-    host: "192.168.1.138",
-    user: "user",
-    password: "1974-Lopez",
   })
+  return DB
+  }else if(dbtouse===2){
+    const DB = await mysql.createConnection({  
+      host: "192.168.1.138",
+      user: "user",
+      password: "1974-Lopez",
+    })
+    return DB
+  }
+}
+
+export const MYSQL = async function(){
+  
+  const DB = await usedb(1)
 
 
   
   if(DB){
     console.log("\n\n--------------------------------------/Connectado/---------------------------------------------\n\n");    
+  }else{
+    console.log("\n\n--------------------------------------/fallo/---------------------------------------------\n\n");   
+    return 
   }
   const [checkdb] = await DB.query("SHOW DATABASES;")
   //@ts-expect-error>
@@ -48,7 +59,7 @@ export const MYSQL = async function(){
 
   //@ts-expect-error>
   const existtables = checktables.some((e)=>{
-    if(e.Tables_in_fabrica==="clientes")return true
+    if(e.Tables_in_fabrica==="clientes" || e.Tables_in_fabrica==="Clientes")return true
     return false
   })
 
@@ -78,7 +89,7 @@ export const MYSQL = async function(){
 
   //@ts-expect-error>
   const existtables2 = checktables.some((e)=>{
-    if(e.Tables_in_fabrica==="usuarios")return true
+    if( e.Tables_in_fabrica==="usuarios" || e.Tables_in_fabrica==="Usuarios")return true
     return false
   })
 
@@ -132,7 +143,7 @@ export const MYSQL = async function(){
   if(DB){
     console.log("\n\n--------------------------------------/DB Fabrica Lista/---------------------------------------------\n\n");    
   }
-  return DB;
+  return DB!;
 }
 
 

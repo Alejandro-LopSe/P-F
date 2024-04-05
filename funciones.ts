@@ -74,7 +74,11 @@ export const clmap1 = (data: Cliente[]): cluster_cliente => {
 
     return cluster
 }
-
+export const Expiredate = ()=>{
+    const date = new Date()
+    date.setSeconds(date.getSeconds()+10)
+    return date
+}
 export const cookie= (log?: string )=>{
     if(log){
         //check de hash

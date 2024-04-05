@@ -6,6 +6,7 @@ import { Cliente } from "../types.ts";
 import { db } from "../DB/SQLConnection.ts";
 
 import * as JWT from 'https://deno.land/x/jose@v5.2.3/index.ts'
+import { Expiredate } from "../funciones.ts";
 
 export type Cookie={
   token?: string
@@ -30,20 +31,23 @@ export const handler: Handlers={
     const password = form.get("password")!.toString()
     
     
-    const exist = await db.query(`SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`)
+    const exist= await db!.query(`SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`)
 
-    if(exist){
+      //@ts-expect-error-
+    if(exist.at(0)!.length===1){
        const token = JWT.base64url.encode(usuario)
 
         return _ctx.render({token: token},{
             headers: {
-                "Set-Cookie": `token=${token}`,
-            }
+                "Set-Cookie": `token=${token}; Max-Age=${10}`,
+                
+            },
+            
         })
     }
 
     
-    return _ctx.render()
+    return _ctx.render({token: ""})
   },
 }
 export default function Home(props: PageProps) {
