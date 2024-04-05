@@ -39,7 +39,7 @@ export const handler: Handlers={
 
         return _ctx.render({token: token},{
             headers: {
-                "Set-Cookie": `token=${token}; Max-Age=${10}`,
+                "Set-Cookie": `token=${token}`,
                 
             },
             
