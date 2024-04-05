@@ -53,13 +53,15 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
         
         const getresponse: cluster_cliente = clmap1(x)
 
-        console.log(1,getresponse);
-        
-        
-        if(getresponse){setnewdata(getresponse)}
-        
 
         setenable(!enable)
+        setnewdata(getresponse)
+        console.log(enable);
+        
+        
+
+        
+        return
     }
     const change_v = (cli: string)=>{
         
@@ -116,13 +118,13 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
                     <p>Correo:  <input type="correo" value={Correp} onBlur={(e)=>{setcorrep(e.currentTarget.value)}}/></p>
                     <p>Direccion:  <input type="direccion" value={Direcion} onBlur={(e)=>{setdir(e.currentTarget.value)}}/></p>
                     <p>Empresa:  
-                        <select type="empresa" value={Empresa} onBlur={(e)=>{setem(parseInt(e.currentTarget.value))}} >
+                        <select type="empresa" value={Empresa} onChange={(e)=>{setem(parseInt(e.currentTarget.value))}} >
                             <option value="1">Si</option>
                             <option value="0">No</option>
                         </select></p>
                     <p>CP:  <input type="cp" value={Cp} onBlur={(e)=>{setcp(parseInt(e.currentTarget.value))}}/></p>
     
-                    <button type="button" onClick={(e)=>{modify()}}> Listo</button>
+                    <button type="button" onClick={async (e)=>{await modify()}}> Listo</button>
                     {error && error}
                 </li>
             )

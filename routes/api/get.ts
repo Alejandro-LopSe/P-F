@@ -12,7 +12,7 @@ export const handler: Handlers = {
         const filtro_N=url.searchParams.get("Nombre") || ""
         const filtro_A=url.searchParams.get("Apellidos") || ""
         
-        const response =  await db.query(`SELECT * FROM Clientes WHERE  Nombre='${filtro_N}' AND  Apellidos='${filtro_A}' AND Activo=1;`)
+        const response =  await db!.query(`SELECT * FROM Clientes WHERE  Nombre='${filtro_N}' AND  Apellidos='${filtro_A}' AND Activo=1;`)
         const [data]= response
         const cluster = clmap(data as Cliente[])
         console.log("get.ts L-18",cluster);
@@ -56,14 +56,14 @@ export const handler: Handlers = {
         }
         
         if(cl.Activo===1){
-            const [_update] = await db.query(`
+            const [_update] = await db!.query(`
             UPDATE Clientes SET
                 Fecha_Baja='0',
                 Activo='1'
             WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';
         `);
         }else if(cl.Activo===0){
-            const [_update] = await db.query(`
+            const [_update] = await db!.query(`
             UPDATE Clientes SET
                 Fecha_Baja='${date}',
                 Activo='0'
@@ -113,25 +113,25 @@ export const handler: Handlers = {
         }
         
         
-        const [results]=  await db.query(`SELECT * FROM Clientes WHERE  Nombre='${cliente.Nombre}' AND  Apellidos='${cliente.Apellidos}' AND Activo=1;`)
+        const [results]=  await db!.query(`SELECT * FROM Clientes WHERE  Nombre='${cliente.Nombre}' AND  Apellidos='${cliente.Apellidos}' AND Activo=1;`)
 
         
         //@ts-expect-error>
         const clienteold = results.at(0) 
         
-        const [_update] = await db.query(`
+        const [_update] = await db!.query(`
             UPDATE Clientes SET
                 Fecha_Baja='${date}',
                 Activo=0
             WHERE  id_cliente='${cl.id_cliente}' AND Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';
         `);
         
-        const response = await db.query(`
+        const response = await db!.query(`
         INSERT INTO Clientes (id_cliente, Nombre, Apellidos, DNI, Telefono, CP, Direccion, Correo, Empresa, Fecha_Alta, Fecha_Baja, Fecha_mod, Activo ) 
         VALUES (
-            '${clienteold.id_cliente}',
-            '${clienteold.Nombre}',
-            '${clienteold.Apellidos}',
+            '${cl.id_cliente}',
+            '${cl.Nombre}',
+            '${cl.Apellidos}',
             '${cliente.DNI}',
             '${cliente.Telefono}', 
             '${cliente.CP}',
@@ -145,7 +145,7 @@ export const handler: Handlers = {
         )
     `);
 
-    const [results1]=  await db.query(`SELECT * FROM clientes WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';`)
+    const [results1]=  await db!.query(`SELECT * FROM Clientes WHERE  Nombre='${cl.Nombre}' AND  Apellidos='${cl.Apellidos}';`)
 
 
 

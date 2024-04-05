@@ -7,7 +7,7 @@ const Menu2: FunctionComponent<MenuProps2> = ({ selected }) => {
 
   
   return (
-    <div class="menu">
+    <div class="menu2">
       {selected!=="Clientes" && <a href="/Clientes" >
       Clientes
       </a>}
