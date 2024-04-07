@@ -2,6 +2,7 @@ import { FunctionComponent } from "preact";
 import Registrar from "../components/Registrar.tsx";
 import { useState } from "preact/hooks";
 import { JSX } from "preact";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 
 const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
@@ -25,9 +26,13 @@ const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
         },
         body: JSON.stringify({usuario: user, password: pass})
       })
+     
+      seterror("1")
+      
       return 
     }
   }
+  //to get token on client console.log("-------document----",IS_BROWSER && document.cookie);
   if(!loged){
     return (
       <form action="/" method="post">
@@ -38,8 +43,9 @@ const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
               <option value="Jose">Jose</option>   
           </select>    
           <input name="password" placeholder="Contraseña" onBlur={(e)=>{setpass(e.currentTarget.value); seterror(""); }}></input>
-          <button type="submit" disabled={false} onClick={async (e)=>{}}>Log-in</button>
+          <button type="submit" disabled={false} onClick={async (e)=>{check(e)}}>Log-in</button>
           {error && error}
+          
       
       </form>
     );

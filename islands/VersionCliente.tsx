@@ -3,6 +3,7 @@ import {Cliente} from "../types.ts"
 import { useState } from "preact/hooks";
 import { cluster_cliente } from "../types.ts";
 import { clmap, clmap1 } from "../funciones.ts";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 
 //@ts-expect-error-
@@ -24,6 +25,7 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
     if(activo===1){
         clas="activo"
     }
+    console.log("-------document----",IS_BROWSER && document.cookie);
 
 
     const modify = async ()=>{

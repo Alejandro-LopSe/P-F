@@ -4,11 +4,13 @@ import {Cliente} from "../types.ts"
 import { cluster_cliente } from "../types.ts";
 import { VersionCliente } from "./VersionCliente.tsx";
 import { useState } from "preact/hooks";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 
 export const Clientes: FunctionComponent<{data: cluster_cliente[]}>= ({data})=>{
     const[activos,setact] =useState<boolean>(false)
-
+    
+    
     return(
         <div class="clientes">
             <div class="check"> 
