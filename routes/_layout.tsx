@@ -15,7 +15,7 @@ export default async function  Layout (req: Request, ctx: FreshContext) {
   const route = ctx.route 
   // last after /
 
-  
+  //tecnicas de imputacion avanzada
   
   const head =  req.headers.get("cookie")
 
