@@ -1,11 +1,12 @@
 import { FunctionComponent } from "preact";
-import Registrar from "../components/Registrar.tsx";
+
 import { useState } from "preact/hooks";
 import { JSX } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
+import { Signal } from "@preact/signals";
 
 
-const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
+const Login: FunctionComponent<{loged?: Signal<boolean>}> = ({loged}) => {
   const [user,setuser] =useState<string>("Admin")
   const [pass,setpass] =useState<string>("")
   const [error,seterror] =useState<string>("")
@@ -36,7 +37,7 @@ const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
   if(!loged){
     return (
       <div class="login">
-        <form action="/" method="post">
+        <form action="/" method="post" >
           <select name="usuario"  value ={user} onChange={(e)=>{setuser(e.currentTarget.value)}}>
               <option value="Admin">Admin</option>
               <option value="Espe">Esperanza</option>
@@ -44,7 +45,7 @@ const Login: FunctionComponent<{loged?: string}> = ({loged}) => {
               <option value="Jose">Jose</option>   
           </select>    
           <input name="password" placeholder="Contraseña" onBlur={(e)=>{setpass(e.currentTarget.value); seterror(""); }}></input>
-          <button type="submit" disabled={false} onClick={ (e)=>{check(e)}}>Log-in</button>
+          <button type="submit" disabled={false} onClick={ (e)=>{}}>Log-in</button>
           {error && error}
           
       

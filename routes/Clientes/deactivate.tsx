@@ -11,11 +11,15 @@ import { DeactivateCliente } from "../../islands/DeactivateCliente.tsx";
 
 export const handler: Handlers = {
     GET: async (_req: Request, ctx: FreshContext) => {
-
-        const response = await db.query(`SELECT * FROM Clientes;`)
-        const [data]= response
-        const cluster = clmap(data as Cliente[])
-        return ctx.render(cluster);
+        const iscookied  = _req.headers.get("cookie")
+        if(iscookied){
+            const response = await db!.query(`SELECT * FROM Clientes;`)
+            const [data]= response
+            const cluster = clmap(data as Cliente[])
+            return ctx.render(cluster);
+        }
+        return Response.redirect("http://localhost:8000/")
+        
     }
 }
 export default function Page(props: PageProps<cluster_cliente[]>){

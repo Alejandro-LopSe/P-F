@@ -1,11 +1,13 @@
-import { FunctionComponent } from "preact";
 
+import { FunctionComponent } from "preact";
 type MenuProps = {
   selected: "Inicio" | "Clientes" | "Pedidos" | "Notlogged";
   token: string
 };
 const Menu: FunctionComponent<MenuProps> = ({ selected ,token}) => {
-  if(selected==="Notlogged"){
+
+
+  if(selected==="Notlogged" || !token){
 
     return (<div class="menu">
         { <a href="/" >

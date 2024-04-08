@@ -5,11 +5,14 @@ import { cluster_cliente } from "../types.ts";
 import { VersionCliente } from "./VersionCliente.tsx";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
+import Login from "./Login.tsx";
+import { Signal } from "@preact/signals";
 
 
-export const Clientes: FunctionComponent<{data: cluster_cliente[]}>= ({data})=>{
+export const Clientes: FunctionComponent<{data: cluster_cliente[], signal: Signal<number>}>= ({data, signal})=>{
     const[activos,setact] =useState<boolean>(false)
-    
+
+
     
     return(
         <div class="clientes">
@@ -19,7 +22,7 @@ export const Clientes: FunctionComponent<{data: cluster_cliente[]}>= ({data})=>{
             <ul>
                 {data && data.map((cl: cluster_cliente)=>{
                     return(
-                        <VersionCliente data={cl} activos={activos}></VersionCliente>
+                        <VersionCliente data={cl} activos={activos} signal={signal}></VersionCliente>
                     )
                 })}
             </ul>

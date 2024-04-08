@@ -1,9 +1,12 @@
 import { FreshContext, Handler, Handlers, PageProps } from "$fresh/server.ts";
 import { context } from "https://deno.land/x/esbuild@v0.20.2/mod.js";
-import Registrar from "../components/Registrar.tsx";
+
 import Login from "../islands/Login.tsx";
 import { Cliente } from "../types.ts";
 import { db } from "../DB/SQLConnection.ts";
+
+import { useSignal } from "@preact/signals";
+
 
 import * as JWT from 'https://deno.land/x/jose@v5.2.3/index.ts'
 import { Expiredate } from "../funciones.ts";
@@ -39,8 +42,7 @@ export const handler: Handlers={
 
         return _ctx.render({token: token},{
             headers: {
-                "Set-Cookie": `token=${token}`,
-                
+                "Set-Cookie": `token=${token}; Max-Age=5`
             },
             
         })
