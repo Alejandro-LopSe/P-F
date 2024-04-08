@@ -16,25 +16,26 @@ export default async function  Layout (req: Request, ctx: FreshContext) {
   // last after /
 
   
+  
   const head =  req.headers.get("cookie")
 
-  let token = head!==null ? head.substring(6) : ""
+  let token: string = head!==null ? head.substring(6) : ""
 
-
+  console.log("toke: ",token);
   const page = route.split("/").pop();
   // if page is empty, it means we are at the root
   const selected = page === "" ? "Inicio": page === "Pedidos" ? "Pedidos": "Clientes" ;
 
   if(token===""){
-    token=ctx.data
+    token=ctx.data.token
   }
   
-  
-  if( head!==null){
+  console.log("toke new: ",ctx.data.token);
+  if( token!==""){
 
     return (
       <body>
-        <Menu selected={selected} token={ctx.data.token || token} />
+        <Menu selected={selected} token={token} />
         <Component />
       </body>
     );
