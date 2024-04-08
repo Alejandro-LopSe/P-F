@@ -95,7 +95,7 @@ export const handler: Handlers = {
     
     async PUT(req: Request,_ctx: FreshContext) {
         const iscookied  = req.headers.get("cookie")
-        console.log(iscookied);
+
         if(iscookied){
             console.log("Updating\n");
             if(!req.body){

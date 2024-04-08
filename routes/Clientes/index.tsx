@@ -25,7 +25,7 @@ export const handler: Handlers = {
 export default function Page(props: PageProps<cluster_cliente[]>){
 
     const signal = useSignal<number>(0)
-    console.log(signal);
+
     
     
     return(
