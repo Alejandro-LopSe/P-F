@@ -33,7 +33,22 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
         }
     }
     check()
-    
+    const checkifchange=(a: Cliente,b:Cliente)=>{
+        const values_a= Object.values(a)
+        const values_b= Object.values(b)
+
+        const chequer = values_a.some((elem,index)=>{
+
+            if(index===9)return true
+            if(elem===values_b.at(index))return false
+            return false
+        })
+
+
+        console.log(chequer);
+        
+        return chequer
+    }
 
     const modify = async ()=>{
 
@@ -52,8 +67,13 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
             Fecha_Baja: "0",
             Activo: 1
         }
+        const checks = checkifchange(cliente,newdata!.v_actual!)
+
         
-        
+        if(checks){
+            setenable(!enable)
+            return
+        }
         const put = await fetch("/api/get",{
             method: "PUT",
             headers: {"Content-Type": "application/json",
@@ -65,7 +85,7 @@ export const VersionCliente: FunctionComponent<{data: cluster_cliente, activos: 
         const getresponse: cluster_cliente = clmap1(x)
 
 
-        setenable(!enable)
+        
         setnewdata(getresponse)
 
 
