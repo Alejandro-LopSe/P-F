@@ -13,6 +13,7 @@ export const handler: Handlers<unknown, state> = {
                 `${query}`,
             );
             const [data] = response;
+            console.log(data);
 
             const str = JSON.stringify(data);
 

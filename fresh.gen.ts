@@ -2,6 +2,7 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $Articulos_index from "./routes/Articulos/index.tsx";
 import * as $Clientes_layout from "./routes/Clientes/_layout.tsx";
 import * as $Clientes_add from "./routes/Clientes/add.tsx";
 import * as $Clientes_deactivate from "./routes/Clientes/deactivate.tsx";
@@ -14,12 +15,14 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
+import * as $api_articulos from "./routes/api/articulos.ts";
 import * as $api_custom from "./routes/api/custom.ts";
 import * as $api_get from "./routes/api/get.ts";
 import * as $api_loger from "./routes/api/loger.ts";
 import * as $index from "./routes/index.tsx";
 import * as $Addcliente from "./islands/Addcliente.tsx";
 import * as $Addpedido from "./islands/Addpedido.tsx";
+import * as $Addreserva from "./islands/Addreserva.tsx";
 import * as $Clientes from "./islands/Clientes.tsx";
 import * as $DeactivateCliente from "./islands/DeactivateCliente.tsx";
 import * as $Desactivar from "./islands/Desactivar.tsx";
@@ -29,6 +32,7 @@ import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
+    "./routes/Articulos/index.tsx": $Articulos_index,
     "./routes/Clientes/_layout.tsx": $Clientes_layout,
     "./routes/Clientes/add.tsx": $Clientes_add,
     "./routes/Clientes/deactivate.tsx": $Clientes_deactivate,
@@ -41,6 +45,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
     "./routes/_middleware.ts": $_middleware,
+    "./routes/api/articulos.ts": $api_articulos,
     "./routes/api/custom.ts": $api_custom,
     "./routes/api/get.ts": $api_get,
     "./routes/api/loger.ts": $api_loger,
@@ -49,6 +54,7 @@ const manifest = {
   islands: {
     "./islands/Addcliente.tsx": $Addcliente,
     "./islands/Addpedido.tsx": $Addpedido,
+    "./islands/Addreserva.tsx": $Addreserva,
     "./islands/Clientes.tsx": $Clientes,
     "./islands/DeactivateCliente.tsx": $DeactivateCliente,
     "./islands/Desactivar.tsx": $Desactivar,

@@ -2,28 +2,31 @@ import { FunctionComponent, JSX } from "preact";
 import { Cliente } from "../types.ts";
 import { useState } from "preact/hooks";
 import { useSignal } from "@preact/signals";
+import { Addreserva } from "./Addreserva.tsx";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 export const Addpedido: FunctionComponent<
     { id_cliente?: number; empleado: number }
 > = (
     { id_cliente, empleado },
 ) => {
-    const ids_clientes = useSignal("null");
+    const [ids_clientes, ids] = useState<number[]>([]);
     const get_clientes = async () => {
         const clientes = await fetch("http://localhost:8000/api/custom", {
             method: "put",
             headers: {
                 "Content-Type": "text",
             },
-            body: "SELECT DISTINCT id_cliente FROM clientes;",
+            body: "SELECT DISTINCT id_cliente FROM clientes WHERE activo=1;",
         });
-        ids_clientes.value = await clientes.text();
+        const data = await clientes.json();
+        console.log("ids", ids_clientes);
 
-        /*ids_clientes = data.map((cl: { id_cliente: number }) => {
+        ids(data.map((cl: { id_cliente: number }) => {
             return cl.id_cliente;
-        });*/
+        }));
     };
-    if (!id_cliente) {
+    if (!id_cliente && IS_BROWSER && ids_clientes.length === 0) {
         get_clientes();
     }
 
@@ -42,14 +45,14 @@ export const Addpedido: FunctionComponent<
                                     name="Nombre"
                                     value={""}
                                 >
-                                    {ids_clientes.value !== "null" &&
-                                        JSON.parse(ids_clientes.value).map(
-                                            (elem: { id_cliente: number }) => {
+                                    {ids_clientes.length !== 0 &&
+                                        ids_clientes.map(
+                                            (elem: number) => {
                                                 return (
                                                     <option
-                                                        value={elem.id_cliente}
+                                                        value={elem}
                                                     >
-                                                        {elem.id_cliente}
+                                                        {elem}
                                                     </option>
                                                 );
                                             },
@@ -58,7 +61,11 @@ export const Addpedido: FunctionComponent<
                             </p>
                             <input type="hidden" value={empleado} />
                             <p>
-                                Año Fiscal: <input type="text" />
+                                Año Fiscal:{" "}
+                                <input
+                                    type="text"
+                                    value={new Date().getFullYear()}
+                                />
                             </p>
                             <p>
                                 Mes:{" "}
@@ -68,10 +75,15 @@ export const Addpedido: FunctionComponent<
                                 />
                             </p>
                             <p>
-                                Estado: <input type="text" />
+                                Tipo de envio:{" "}
+                                <select name="envio" value={"RECOGIDA"}>
+                                    <option value="RECOGIDA">RECOGIDA</option>
+                                    <option value="ENVIO">ENVIO</option>
+                                    <option value="LLEVAR">LLEVAR</option>
+                                </select>
                             </p>
                             <p>
-                                Tipo de envio: <input type="text" />
+                                <Addreserva id_pedido={0}></Addreserva>
                             </p>
                             <p>
                                 Pago total:
@@ -88,7 +100,11 @@ export const Addpedido: FunctionComponent<
                             </p>
                             <input type="hidden" value={empleado} />
                             <p>
-                                Año Fiscal: <input type="text" />
+                                Año Fiscal:{" "}
+                                <input
+                                    type="text"
+                                    value={new Date().getFullYear()}
+                                />
                             </p>
                             <p>
                                 Mes:{" "}
@@ -98,10 +114,12 @@ export const Addpedido: FunctionComponent<
                                 />
                             </p>
                             <p>
-                                Estado: <input type="text" />
-                            </p>
-                            <p>
-                                Tipo de envio: <input type="text" />
+                                Tipo de envio:{" "}
+                                <select name="envio" value={"RECOGIDA"}>
+                                    <option value="RECOGIDA">RECOGIDA</option>
+                                    <option value="ENVIO">ENVIO</option>
+                                    <option value="LLEVAR">LLEVAR</option>
+                                </select>
                             </p>
                             <p>
                                 Pago total:

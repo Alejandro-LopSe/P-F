@@ -1,6 +1,7 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { db } from "../../DB/SQLConnection.ts";
-import { Pedido, state } from "../../types.ts";
+import { Articulo, Pedido, state } from "../../types.ts";
+
 export const handler: Handlers<Pedido[], state> = {
   GET: async (_req: Request, ctx: FreshContext<state, Pedido[]>) => {
     if (ctx.state.user) {

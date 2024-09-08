@@ -209,10 +209,13 @@ export const VersionCliente: FunctionComponent<
                                 Modificar
                             </button>
                             <form
-                                action={`/Pedidos/add?id_cliente=${
-                                    newdata.v_actual!.id_cliente
-                                }`}
+                                action={`/Pedidos/add`}
                             >
+                                <input
+                                    type="hidden"
+                                    value={id}
+                                    name="id_cliente"
+                                />
                                 <button type="submit">
                                     Añadir Pedido
                                 </button>

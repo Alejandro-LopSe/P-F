@@ -16,10 +16,10 @@ export type Cliente = {
 };
 export type Articulo = {
   id_articulo: string;
-  tamaño: Tamaños;
-  aceite: Aceite;
-  envase: Envase;
-  Precio_ud: number;
+  Tamano: Tamaños;
+  Tipo_aceite: Aceite;
+  Envase: Envase;
+  Precio: number;
 };
 export type Pedido = {
   id_pedido: number;
