@@ -11,7 +11,7 @@ export const handler: Handlers = {
         const {usuario,password} = await _req.json()
         
         
-        const exist = await db.query(`SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`)
+        const exist = await db!.query(`SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`)
 
         if(exist){
            const token = JWT.base64url.encode(usuario)

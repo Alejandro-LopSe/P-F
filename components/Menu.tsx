@@ -1,41 +1,24 @@
 import { FunctionComponent } from "preact";
+import { state } from "../types.ts";
 
-type MenuProps = {
-  selected: "Inicio" | "Clientes" | "Pedidos" | "Notlogged";
-  token: string
+export const Menu: FunctionComponent<{ state: state }> = (
+  { state },
+) => {
+  return (
+    <div class="menu">
+      {state !== undefined && <p>Logeado como {state.user}</p>}
+
+      <a href="/">
+        Inicio
+      </a>
+
+      <a href="/Clientes">
+        Clientes
+      </a>
+
+      <a href="/Pedidos">
+        Pedidos
+      </a>
+    </div>
+  );
 };
-const Menu: FunctionComponent<MenuProps> = ({ selected ,token}) => {
-  if(selected==="Notlogged"){
-
-    return (<div class="menu">
-        { <a href="/" >
-           Inicio
-        </a>}
-        { <a href="/" >
-          Clientes
-        </a>}
-        { <a href="/" >
-          Pedidos
-        </a>}
-    </div>)
-  }else{
-    return (
-
-      <div class="menu">
-        {token && <p>Logeado</p>}
-        {selected!=="Inicio" && <a href="/" >
-           Inicio
-        </a>}
-        {selected!=="Clientes" && <a href="/Clientes" >
-          Clientes
-        </a>}
-        {selected!=="Pedidos" && <a href="/Pedidos" >
-          Pedidos
-        </a>}
-      </div>
-    );
-  }
-  
-};
-
-export default Menu;

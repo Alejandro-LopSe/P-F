@@ -1,61 +1,59 @@
-import { FreshContext, Handler, Handlers, PageProps } from "$fresh/server.ts";
-import { context } from "https://deno.land/x/esbuild@v0.20.2/mod.js";
-import Registrar from "../components/Registrar.tsx";
-import Login from "../islands/Login.tsx";
-import { Cliente } from "../types.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+
+import jwt from "jsonwebtoken";
+import { Login } from "../islands/Login.tsx";
+
 import { db } from "../DB/SQLConnection.ts";
+import { state } from "../types.ts";
 
-import * as JWT from 'https://deno.land/x/jose@v5.2.3/index.ts'
-import { Expiredate } from "../funciones.ts";
+const key = Deno.env.get("key");
 
-export type Cookie={
-  token?: string
-}
-export const handler: Handlers={
-  
-  GET:  async (_req: Request, ctx: FreshContext) =>{
-    const head =  _req.headers.get("cookie")
-    const token = head!==null ? head.substring(6) : undefined
-      const cookie: Cookie={
-        token: token
-      }
-    
-    const r = await ctx.render(cookie)
+export const handler: Handlers<unknown, state> = {
+  GET: (_req: Request, _ctx: FreshContext<state>) => {
+    console.log("get index");
 
-    return r
+    return _ctx.render();
   },
-  POST: async (_req: Request, _ctx: FreshContext) =>{
-    console.log("logg");
-    const form =  await _req.formData()
-    const usuario = form.get("usuario")!.toString()
-    const password = form.get("password")!.toString()
-    
-    
-    const exist= await db!.query(`SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`)
+  POST: async (_req: Request, _ctx: FreshContext<state>) => {
+    const form = await _req.formData();
+    const usuario = form.get("usuario")!.toString();
+    const password = form.get("password")!.toString();
 
-      //@ts-expect-error-
-    if(exist.at(0)!.length===1){
-       const token = JWT.base64url.encode(usuario)
+    const exist = await db!.query(
+      `SELECT * FROM Usuarios WHERE Nombre='${usuario}' AND Password='${password}'`,
+    );
 
-        return _ctx.render({token: token},{
-            headers: {
-                "Set-Cookie": `token=${token}`,
-                
-            },
-            
-        })
+    //@ts-expect-error-
+    if (exist.at(0)!.length === 1) {
+      const payload = {
+        //@ts-expect-error1
+        id_usuario: exist!.at(0)!.at(0)!.id_usuario,
+        user: usuario,
+        pass: password,
+      };
+
+      const signed = await jwt.sign(payload, key);
+
+      _ctx.state = {
+        //@ts-expect-error1
+        id_usuario: exist!.at(0)!.at(0)!.id_usuario,
+        user: usuario,
+      };
+
+      const headers = new Headers({
+        location: "/Clientes",
+        "Set-Cookie": `token=${signed}; Max-Age=3600`,
+      });
+
+      return new Response("", {
+        headers,
+        status: 302,
+      });
     }
 
-    
-    return _ctx.render({token: ""})
+    return _ctx.render();
   },
-}
-export default function Home(props: PageProps) {
-
-  
-  return (
-    <>
-    <Login loged={props.data.token}/>
-    </>
-  );
+};
+export default function Home() {
+  return <Login />;
 }

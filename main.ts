@@ -9,7 +9,7 @@ import "$std/dotenv/load.ts";
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
-
+import * as JWT from 'https://deno.land/x/jose@v5.2.3/index.ts'
 
 
 // deno-lint-ignore-file no-unused-vars
@@ -19,4 +19,3 @@ import config from "./fresh.config.ts";
 
 
 await start(manifest, config);
-
