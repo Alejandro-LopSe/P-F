@@ -14,11 +14,21 @@ export const handler: Handlers = {
                 `SELECT * FROM usuarios WHERE Nombre='${usuario}' AND Password=${contrasena}`,
             );
             console.log("LOGIN 15: ", check![0]);
-            //
+            //@ts-expect-errora
             const user = check![0][0];
             if (user) {
                 const token = jwt.sign(JSON.stringify(user), "secreto");
                 console.log("Token: ", token);
+                const headers = new Headers({
+                    "Set-Cookie": `auth=${token}`,
+                    location: "/portal",
+                });
+
+                ctx.state = { user: user.Nombre, id_usuario: user.id_usuario };
+                return new Response("", {
+                    headers,
+                    status: 302,
+                });
             }
             return ctx.render();
         } catch (error) {

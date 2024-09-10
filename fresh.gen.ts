@@ -2,65 +2,19 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $Articulos_index from "./routes/Articulos/index.tsx";
-import * as $Clientes_layout from "./routes/Clientes/_layout.tsx";
-import * as $Clientes_add from "./routes/Clientes/add.tsx";
-import * as $Clientes_deactivate from "./routes/Clientes/deactivate.tsx";
-import * as $Clientes_index from "./routes/Clientes/index.tsx";
-import * as $Pedidos_layout from "./routes/Pedidos/_layout.tsx";
-import * as $Pedidos_add from "./routes/Pedidos/add.tsx";
-import * as $Pedidos_index from "./routes/Pedidos/index.tsx";
-import * as $Pedidos_modify from "./routes/Pedidos/modify.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $_layout from "./routes/_layout.tsx";
-import * as $_middleware from "./routes/_middleware.ts";
-import * as $api_articulos from "./routes/api/articulos.ts";
-import * as $api_custom from "./routes/api/custom.ts";
-import * as $api_get from "./routes/api/get.ts";
-import * as $api_loger from "./routes/api/loger.ts";
-import * as $index from "./routes/index.tsx";
-import * as $Addcliente from "./islands/Addcliente.tsx";
-import * as $Addpedido from "./islands/Addpedido.tsx";
-import * as $Addreserva from "./islands/Addreserva.tsx";
-import * as $Clientes from "./islands/Clientes.tsx";
-import * as $DeactivateCliente from "./islands/DeactivateCliente.tsx";
-import * as $Desactivar from "./islands/Desactivar.tsx";
-import * as $Login from "./islands/Login.tsx";
-import * as $VersionCliente from "./islands/VersionCliente.tsx";
+import * as $login from "./routes/login.tsx";
+
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/Articulos/index.tsx": $Articulos_index,
-    "./routes/Clientes/_layout.tsx": $Clientes_layout,
-    "./routes/Clientes/add.tsx": $Clientes_add,
-    "./routes/Clientes/deactivate.tsx": $Clientes_deactivate,
-    "./routes/Clientes/index.tsx": $Clientes_index,
-    "./routes/Pedidos/_layout.tsx": $Pedidos_layout,
-    "./routes/Pedidos/add.tsx": $Pedidos_add,
-    "./routes/Pedidos/index.tsx": $Pedidos_index,
-    "./routes/Pedidos/modify.tsx": $Pedidos_modify,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/_layout.tsx": $_layout,
-    "./routes/_middleware.ts": $_middleware,
-    "./routes/api/articulos.ts": $api_articulos,
-    "./routes/api/custom.ts": $api_custom,
-    "./routes/api/get.ts": $api_get,
-    "./routes/api/loger.ts": $api_loger,
-    "./routes/index.tsx": $index,
+    "./routes/login.tsx": $login,
   },
-  islands: {
-    "./islands/Addcliente.tsx": $Addcliente,
-    "./islands/Addpedido.tsx": $Addpedido,
-    "./islands/Addreserva.tsx": $Addreserva,
-    "./islands/Clientes.tsx": $Clientes,
-    "./islands/DeactivateCliente.tsx": $DeactivateCliente,
-    "./islands/Desactivar.tsx": $Desactivar,
-    "./islands/Login.tsx": $Login,
-    "./islands/VersionCliente.tsx": $VersionCliente,
-  },
+  islands: {},
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
