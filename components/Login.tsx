@@ -2,7 +2,7 @@ import { FunctionalComponent } from "preact";
 
 export const Login: FunctionalComponent = () => {
     return (
-        <div>
+        <div class="login">
             <p>BIENVENIDO</p>
             <form action="/login" method="post">
                 <label for="usuario">Usuario</label>
