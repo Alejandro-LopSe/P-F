@@ -24,6 +24,13 @@ export const handler = async (req: Request, ctx: FreshContext<state>) => {
     }
 
     const cookie = cookie_raw.substring(5);
+    if (!cookie) {
+        const headers = new Headers({ location: "/login" });
+        return new Response("", {
+            headers,
+            status: 302,
+        });
+    }
     const payload = jwt.verify(cookie, "secreto");
     if (!payload) {
         const headers = new Headers({ location: "/login" });

@@ -6,10 +6,12 @@ export const CustomHeader: FunctionalComponent<{ state: state }> = (
     { state },
 ) => {
     return (
-        <div>
-            <img src="" alt="" />
-            <p>{state.user}</p>
-            <form action="/login">
+        <div class="customheader">
+            <div class="user">
+                <img src="/userimg.png" alt="" />
+                <p>{state.user}</p>
+            </div>
+            <form class="formm" action="/login">
                 <Logout></Logout>
             </form>
         </div>

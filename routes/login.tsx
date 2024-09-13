@@ -20,7 +20,7 @@ export const handler: Handlers = {
                 const token = jwt.sign(JSON.stringify(user), "secreto");
                 console.log("Token: ", token);
                 const headers = new Headers({
-                    "Set-Cookie": `auth=${token}`,
+                    "Set-Cookie": `auth=${token}; Max-Age=3600;`,
                     location: "/portal",
                 });
 
