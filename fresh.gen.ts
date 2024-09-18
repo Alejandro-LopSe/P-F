@@ -2,17 +2,31 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $Api_checkCliente from "./routes/Api/checkCliente.ts";
+import * as $Api_modCliente from "./routes/Api/modCliente.ts";
+import * as $Clientes_Añadir from "./routes/Clientes/Añadir.tsx";
+import * as $Clientes_Modificar from "./routes/Clientes/Modificar.tsx";
+import * as $Clientes_index from "./routes/Clientes/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $portal_index from "./routes/portal/index.tsx";
+import * as $AddCliente from "./islands/AddCliente.tsx";
+import * as $Clientemd from "./islands/Clientemd.tsx";
+import * as $Clientes from "./islands/Clientes.tsx";
+import * as $ClientesModificar from "./islands/ClientesModificar.tsx";
 import * as $Logout from "./islands/Logout.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
+    "./routes/Api/checkCliente.ts": $Api_checkCliente,
+    "./routes/Api/modCliente.ts": $Api_modCliente,
+    "./routes/Clientes/Añadir.tsx": $Clientes_Añadir,
+    "./routes/Clientes/Modificar.tsx": $Clientes_Modificar,
+    "./routes/Clientes/index.tsx": $Clientes_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
@@ -21,6 +35,10 @@ const manifest = {
     "./routes/portal/index.tsx": $portal_index,
   },
   islands: {
+    "./islands/AddCliente.tsx": $AddCliente,
+    "./islands/Clientemd.tsx": $Clientemd,
+    "./islands/Clientes.tsx": $Clientes,
+    "./islands/ClientesModificar.tsx": $ClientesModificar,
     "./islands/Logout.tsx": $Logout,
   },
   baseUrl: import.meta.url,

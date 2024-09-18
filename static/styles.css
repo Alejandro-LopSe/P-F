@@ -5,8 +5,8 @@ body{
   padding: 0;
   width: 100dvw;
   height: 100dvh;
-  background-color: rgb(255, 255, 255);
-  background-image: url("fondo.png") ;
+  background-color: rgb(0, 7, 139);
+
   background-size: contain;
 
 }
@@ -19,7 +19,7 @@ body{
   justify-content: center;
   padding: 10px;
   border-style: outset;
-  background-color: rgba(255, 255, 255, 0.884);
+  background-color: rgba(255, 255, 255, 0.682);
   p{
     align-self: center;
   }
@@ -52,7 +52,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgba(240, 248, 255, 0.786);
+  background-color: rgba(240, 248, 255, 0.615);
   margin: 10px;
 }
 .user{
@@ -87,10 +87,10 @@ body{
   margin: 20px;
   width: 182px;
   height: 90%;
-  background-color: rgba(240, 248, 255, 0.786);
+  background-color: rgba(255, 255, 255, 0.682);
   border-style: solid;
   border-radius: 2px;
-  border-color: darkgreen;
+  border-color: rgb(68, 68, 68);
   h1{
     display: flex;
     
@@ -114,5 +114,169 @@ body{
     background-color: rgba(30, 103, 46, 0.689);
     border-style: solid;
     border-radius: 2px;
+    border-color: rgb(68, 68, 68);;
   }
+}
+.clientes{
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  margin: 20px;
+
+  padding-left: 5px; 
+  
+ 
+  div{
+    
+    display: flex;
+    flex-direction: row;
+    
+    input{
+      margin-left: 5px;
+      width: 20px;
+    }
+    select{
+      margin-left: 5px;
+      width: 50px;
+    }
+
+    p.nombre{
+      display: flex;
+      justify-content: start;
+      
+      width: 33%;
+    }
+    p.pedido{
+      display: flex;
+      justify-content: center;
+      
+      width: 33%;
+    }
+    p.modificaciones{
+      display: flex;
+      justify-content: end;
+      padding-right: 10px;
+      width: 33%;
+    }
+    background-color: rgba(255, 255, 255, 0.682);
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: rgb(68, 68, 68);
+
+    padding-left: 10px;
+  }
+  
+  
+}
+
+.clientesmodificar{
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  margin: 20px;
+
+  padding-left: 5px; 
+  
+ 
+  div{
+    
+    display: flex;
+    flex-direction: row;
+    
+    input{
+      margin-left: 5px;
+      width: 20px;
+    }
+    select{
+      margin-left: 5px;
+      width: 50px;
+    }
+
+    p.nombre{
+      display: flex;
+      justify-content: start;
+      
+      width: 30%;
+    }
+    p.pedido{
+      display: flex;
+      justify-content: center;
+      
+      width: 30%;
+    }
+    input.modificaciones{
+      display: flex;
+      justify-content: end;
+      padding-right: 10px;
+      width: 30%;
+      align-self: center;
+      height: fit-content;
+    }
+    
+    input.pedido{
+      display: flex;
+      justify-content: center;
+      height: fit-content;
+      align-self: center;
+      width: 30%;
+    }
+    select.pedido{
+      display: flex;
+      justify-content: center;
+      height: fit-content;
+      align-self: center;
+      width: 10%;
+    }
+    p.modificaciones{
+      display: flex;
+      justify-content: end;
+      padding-right: 10px;
+      
+      width: 33%;
+    }
+    background-color: rgba(255, 255, 255, 0.682);
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: rgb(68, 68, 68);
+
+    padding-left: 10px;
+  }
+  
+  
+}
+.return{
+  color: black;
+  display: flex;
+  width: fit-content;
+  text-decoration: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.682);
+  border-style: solid;
+  border-radius: 2px;
+}
+.first{
+  border-style: solid;
+  border-radius: 2px;
+  border-color: darkgreen;
+}
+.buttonmodificar{
+  align-self: center;
+  color: black;
+  display: flex;
+  width: fit-content;
+  height:22px;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+
+
+}
+.correcto{
+  background-color: darkgreen;
+}
+.incorrecto{
+  background-color: rgb(158, 3, 3);
 }
