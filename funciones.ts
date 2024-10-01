@@ -85,3 +85,6 @@ export const cookie_to_json = (raw_cookie: string): Cookie[] => {
     });
     return cookies;
 };
+
+import { Signal, useSignal } from "@preact/signals";
+export const activarseñal = useSignal(0);
