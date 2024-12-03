@@ -20,7 +20,6 @@ import * as $AddCliente from "./islands/AddCliente.tsx";
 import * as $Clientemd from "./islands/Clientemd.tsx";
 import * as $Clientes from "./islands/Clientes.tsx";
 import * as $ClientesAct from "./islands/ClientesAct.tsx";
-import * as $ClientesFiltroActivo from "./islands/ClientesFiltroActivo.tsx";
 import * as $ClientesModificar from "./islands/ClientesModificar.tsx";
 import * as $Logout from "./islands/Logout.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -47,7 +46,6 @@ const manifest = {
     "./islands/Clientemd.tsx": $Clientemd,
     "./islands/Clientes.tsx": $Clientes,
     "./islands/ClientesAct.tsx": $ClientesAct,
-    "./islands/ClientesFiltroActivo.tsx": $ClientesFiltroActivo,
     "./islands/ClientesModificar.tsx": $ClientesModificar,
     "./islands/Logout.tsx": $Logout,
   },

@@ -4,6 +4,8 @@ import { CustomHeader } from "../../components/CustomHeader.tsx";
 import { db } from "../../DB/SQLConnection.ts";
 import { Cliente, state } from "../../types.ts";
 import { ClientesAct } from "../../islands/ClientesAct.tsx";
+import { clientes } from "../../funciones.ts";
+import { useEffect } from "preact/hooks";
 
 export const handler: Handlers<Cliente[], state> = {
     GET: async (_req: Request, ctx: FreshContext<state, Cliente[]>) => {

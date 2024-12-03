@@ -4,10 +4,12 @@ import { Signal, useSignal } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
 
 export const ActivacionCliente: FunctionalComponent<
-    { props: { data: Cliente }; señal: Signal }
+    { props: { data: Cliente; index: number }; signal: Signal<Cliente[]> }
 > = (
-    { props, señal },
+    { props, signal },
 ) => {
+    console.log("SIGNALLLL: ", signal.value);
+
     const [dni, dnimod] = useState<string>(props.data.DNI!);
     const [error, errormod] = useState<string>("");
     const [tlf, tlfmod] = useState<number>(props.data.Telefono!);
@@ -15,9 +17,11 @@ export const ActivacionCliente: FunctionalComponent<
     const [dir, dirmod] = useState<string>(props.data.Direccion!);
     const [correo, correomod] = useState<string>(props.data.Correo!);
     const [empresa, empresamod] = useState<number>(props.data.Empresa!);
+    const [act, actmod] = useState<number>(props.data.Activo!);
 
     const send = async () => {
         const body = {
+            ...props.data,
             Nombre: props.data.Nombre,
             Apellidos: props.data.Apellidos,
             dni,
@@ -27,21 +31,21 @@ export const ActivacionCliente: FunctionalComponent<
             correo,
             empresa,
         };
+        console.log(body);
+
         const exist = await fetch("http://localhost:8000/Api/actCliente", {
             method: "PUT",
             headers: { "content-type": "apliccation/json" },
             body: JSON.stringify(body),
         });
-        const res = await exist.text();
+        const res = await exist.json();
+
         if (res.includes("Error")) {
             errormod("incorrecto");
             return;
         }
-        señal.value = señal.value === 1 ? 0 : 1;
-        console.log(señal);
-
-        console.log(res);
         errormod("correcto");
+
         return;
     };
 
@@ -49,8 +53,7 @@ export const ActivacionCliente: FunctionalComponent<
         <>
             {
                 <div
-                    class={props.data["Activo"] === 1 ? "activo" : "inactivo"}
-                    id={`${props.data.Nombre}${props.data.Apellidos}`}
+                    class={act === 1 ? "activo" : "inactivo"}
                 >
                     <p class="nombre">
                         {`${props.data.Nombre} ${props.data.Apellidos}`}
@@ -85,15 +88,13 @@ export const ActivacionCliente: FunctionalComponent<
                     <p class="pedido">
                         {empresa === 1 ? "Si" : "No"}
                     </p>
-                    <a
+                    <p
                         href="/Clientes/Activar"
-                        class={`buttonmodificar ${error}`}
+                        class={`buttonmodificar`}
                         onClick={send}
                     >
-                        {props.data["Activo"] === 1
-                            ? "Desactivar"
-                            : "Reactivar"}
-                    </a>
+                        {act === 1 ? "Desactivar" : "Reactivar"}
+                    </p>
                 </div>
             }
         </>

@@ -3,6 +3,13 @@ import { useErrorBoundary } from "https://esm.sh/v128/preact@10.19.6/hooks/src/i
 import { db } from "../../DB/SQLConnection.ts";
 
 export const handler: Handlers = {
+    GET: async (_req: Request, ctx: FreshContext) => {
+        const clientes_raw = await db!.query("SELECT * FROM clientes;");
+        //@ts-expect-errors
+        const clientes: Cliente[] = clientes_raw[0];
+
+        return new Response(JSON.stringify(clientes));
+    },
     PUT: async (req: Request, ctx: FreshContext) => {
         const body = await req.json();
 

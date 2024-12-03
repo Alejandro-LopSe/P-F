@@ -19,7 +19,8 @@ export const horas = (value: number): string => {
         return `${value}`;
     }
 };
-
+import { useSignal } from "@preact/signals";
+export const clientes = useSignal<Cliente[]>([]);
 export const clmap = (data: Cliente[]): cluster_cliente[] => {
     const clients_formated: cluster_cliente[] = data.reduce(
         (acc: cluster_cliente[], cl: Cliente) => {
@@ -85,6 +86,3 @@ export const cookie_to_json = (raw_cookie: string): Cookie[] => {
     });
     return cookies;
 };
-
-import { Signal, useSignal } from "@preact/signals";
-export const activarseñal = useSignal(0);
