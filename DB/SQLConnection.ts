@@ -5,8 +5,8 @@ const usedb = async (dbtouse: number) => {
     const DB = await mysql.createConnection({
       "host": "127.0.0.1",
       "port": 3306,
-      "user": "admin",
-      "password": "1974familia1974",
+      "user": "root",
+      "password": "Pass-1974",
     });
     return DB;
   } else if (dbtouse === 2) {

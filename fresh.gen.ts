@@ -22,7 +22,7 @@ import * as $Clientes from "./islands/Clientes.tsx";
 import * as $ClientesAct from "./islands/ClientesAct.tsx";
 import * as $ClientesModificar from "./islands/ClientesModificar.tsx";
 import * as $Logout from "./islands/Logout.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
