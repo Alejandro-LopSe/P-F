@@ -34,11 +34,7 @@ export type Pedido = {
   pago_total: number;
   notas: string;
 };
-export type Reserva = {
-  id_articulo: number;
-  id_pedido: number;
-  cantidad: number;
-};
+
 export type User = {
   id_usuario: number;
   user: string;
@@ -80,6 +76,10 @@ export type Pedido_ts = {
   notas?: string;
   //-------------------
   articulos: [Articulo];
+};
+export type addpedido = {
+  pedidos: Pedido[];
+  clientes: Cliente[];
 };
 
 /*------------------------------------------ENUMS-----------------------------------------------*/

@@ -57,7 +57,6 @@ export const ArticulosLista: FunctionalComponent<
             </div>
           );
         })}
-      <p>{signal.value}</p>
     </>
   );
 };

@@ -6,7 +6,9 @@ import * as $Api_actCliente from "./routes/Api/actCliente.ts";
 import * as $Api_addArticulo from "./routes/Api/addArticulo.ts";
 import * as $Api_articulos from "./routes/Api/articulos.ts";
 import * as $Api_checkCliente from "./routes/Api/checkCliente.ts";
+import * as $Api_getCliente from "./routes/Api/getCliente.ts";
 import * as $Api_modCliente from "./routes/Api/modCliente.ts";
+import * as $Articulos_Modificar from "./routes/Articulos/Modificar.tsx";
 import * as $Articulos_index from "./routes/Articulos/index.tsx";
 import * as $Clientes_Activar from "./routes/Clientes/Activar.tsx";
 import * as $Clientes_Añadir from "./routes/Clientes/Añadir.tsx";
@@ -23,12 +25,19 @@ import * as $portal_index from "./routes/portal/index.tsx";
 import * as $ActivacionCliente from "./islands/ActivacionCliente.tsx";
 import * as $AddArticulos from "./islands/AddArticulos.tsx";
 import * as $AddCliente from "./islands/AddCliente.tsx";
+import * as $AddPedido from "./islands/AddPedido.tsx";
 import * as $ArticulosLista from "./islands/ArticulosLista.tsx";
+import * as $ArticulosListaMod from "./islands/ArticulosListaMod.tsx";
 import * as $Clientemd from "./islands/Clientemd.tsx";
 import * as $Clientes from "./islands/Clientes.tsx";
 import * as $ClientesAct from "./islands/ClientesAct.tsx";
 import * as $ClientesModificar from "./islands/ClientesModificar.tsx";
+import * as $FiltroPedidos from "./islands/FiltroPedidos.tsx";
 import * as $Logout from "./islands/Logout.tsx";
+import * as $PeidoVista from "./islands/PeidoVista.tsx";
+import * as $c_InputSelect from "./islands/c/InputSelect.tsx";
+import * as $p_InfoPedidoAdd from "./islands/p/InfoPedidoAdd.tsx";
+import * as $p_ReservasAdd from "./islands/p/ReservasAdd.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -37,7 +46,9 @@ const manifest = {
     "./routes/Api/addArticulo.ts": $Api_addArticulo,
     "./routes/Api/articulos.ts": $Api_articulos,
     "./routes/Api/checkCliente.ts": $Api_checkCliente,
+    "./routes/Api/getCliente.ts": $Api_getCliente,
     "./routes/Api/modCliente.ts": $Api_modCliente,
+    "./routes/Articulos/Modificar.tsx": $Articulos_Modificar,
     "./routes/Articulos/index.tsx": $Articulos_index,
     "./routes/Clientes/Activar.tsx": $Clientes_Activar,
     "./routes/Clientes/Añadir.tsx": $Clientes_Añadir,
@@ -56,12 +67,19 @@ const manifest = {
     "./islands/ActivacionCliente.tsx": $ActivacionCliente,
     "./islands/AddArticulos.tsx": $AddArticulos,
     "./islands/AddCliente.tsx": $AddCliente,
+    "./islands/AddPedido.tsx": $AddPedido,
     "./islands/ArticulosLista.tsx": $ArticulosLista,
+    "./islands/ArticulosListaMod.tsx": $ArticulosListaMod,
     "./islands/Clientemd.tsx": $Clientemd,
     "./islands/Clientes.tsx": $Clientes,
     "./islands/ClientesAct.tsx": $ClientesAct,
     "./islands/ClientesModificar.tsx": $ClientesModificar,
+    "./islands/FiltroPedidos.tsx": $FiltroPedidos,
     "./islands/Logout.tsx": $Logout,
+    "./islands/PeidoVista.tsx": $PeidoVista,
+    "./islands/c/InputSelect.tsx": $c_InputSelect,
+    "./islands/p/InfoPedidoAdd.tsx": $p_InfoPedidoAdd,
+    "./islands/p/ReservasAdd.tsx": $p_ReservasAdd,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
