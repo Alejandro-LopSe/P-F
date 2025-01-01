@@ -16,10 +16,12 @@ export type Cliente = {
 };
 export type Articulo = {
   id_articulo: string;
-  Tamano: Tamaños;
-  Tipo_aceite: Aceite;
-  Envase: Envase;
-  Precio: number;
+  nombre: string;
+  tamano: Tamaños;
+  tipo_aceite: Aceite;
+  envase: Envase;
+  cantidad: number | 1;
+  precio: number;
 };
 export type Pedido = {
   id_pedido: number;
@@ -66,22 +68,39 @@ export type state = {
   user: string;
 };
 
+export type Pedido_ts = {
+  id_pedido: number;
+  id_cliente: number;
+  ano_fiscal: string;
+  mes: number;
+  id_empleado: number;
+  estado: Estado;
+  envio: Envio;
+  pago_total: number;
+  notas?: string;
+  //-------------------
+  articulos: [Articulo];
+};
+
 /*------------------------------------------ENUMS-----------------------------------------------*/
 
 export enum Tamaños {
-  L5 = "L5",
-  L2 = "L2",
-  L05 = "L0.5",
-  L025 = "L0.25",
+  L5 = "5 Litros",
+  L2 = "2 Litros",
+  L05 = "0.5 Litros",
+  L025 = "0.25 Litros",
 }
 export enum Aceite {
-  MAD = "MAD",
-  DO = "DO",
+  MAD = "Madroñal",
+  DO = "Molino",
 }
 export enum Envase {
-  PLASTICO = "PLASTICO",
-  LATA = "LATA",
-  CRISTAL = "CRISTAL",
+  PLASTICO = "Botella",
+  LATA = "Lata",
+  CRISTAL = "Botella Cristal",
+  CAJA_PLASTICO = "Caja de Botellas",
+  CAJA_LATA = "Caja de Latas",
+  CAJA_CRISTAL = "Caja de Botellas Cristal",
 }
 export enum Estado {
   PENDIENTE = "PENDIENTE",

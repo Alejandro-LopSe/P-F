@@ -10,7 +10,6 @@ body{
   background-size: contain;
 
 }
-
 .login{
   margin-top: 50px;
   align-self: center;
@@ -47,7 +46,6 @@ body{
     }
   }
 }
-
 .customheader{
   display: flex;
   flex-direction: row;
@@ -66,7 +64,6 @@ body{
   }
   
 }
-
 .formm{
   display: flex;
  
@@ -97,7 +94,6 @@ body{
     
   }
 }
-
 .menuclientes{
   display: flex;
   height: 100%;
@@ -125,13 +121,8 @@ body{
 
   padding-left: 5px; 
   
-  .activo{
-    background-color: rgba(129, 248, 131, 0.663);
-  }
-  .inactivo{
-    background-color: rgba(250, 68, 68, 0.724);
-  }
-  div{
+  
+  .div{
     
     display: flex;
     flex-direction: row;
@@ -171,10 +162,13 @@ body{
 
     padding-left: 10px;
   }
-  
-  
+  .div.activo {
+    background-color: rgba(129, 248, 131, 0.663); /* Verde */
+  }
+  .div.inactivo {
+    background-color: rgba(250, 68, 68, 0.724); /* Rojo */
+  }  
 }
-
 .clientesmodificar{
   display: flex;
   padding: 20px;
@@ -252,15 +246,18 @@ body{
   
 }
 .return{
-  color: black;
   display: flex;
-  width: fit-content;
-  text-decoration: none;
-  padding: 5px;
-  margin-bottom: 10px;
+  justify-content: center;
+  align-self: flex-start;
+  margin: 10px;
   background-color: rgba(255, 255, 255, 0.682);
   border-style: solid;
   border-radius: 2px;
+  border-color: rgb(68, 68, 68);
+  padding: 5px;
+  color: black;
+  display: flex;
+  text-decoration: none;
 }
 .first{
   border-style: solid;
@@ -284,4 +281,71 @@ body{
 }
 .incorrecto{
   background-color: rgb(158, 3, 3);
+}
+.cabecera_articulos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgba(240, 248, 255, 0.615);
+  margin-left: 10px;
+  margin-right: 10px;
+  border-style: solid;
+    border-radius: 2px;
+    border-color: rgb(68, 68, 68);
+}
+.botones_superiores{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  button{
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.682);
+    border-style: solid;
+    border-radius: 2px;
+    border-color: rgb(68, 68, 68);
+    padding: 5px;
+    color: black;
+    display: flex;
+    text-decoration: none;
+  }
+}
+.price{
+  width: 40px;
+}
+.nuevo_articulo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgba(240, 248, 255, 0.615);
+  margin-left: 10px;
+  margin-right: 10px;
+  border-style: solid;
+    border-radius: 2px;
+    border-color: rgb(68, 68, 68);
+    p.nombre{
+      display: flex;
+      justify-content: center;
+      justify-self: start;
+      width: 33%;
+    }
+    p.pedido{
+      display: flex;
+      justify-content: center;
+      justify-self: center;
+      width: 33%;
+    }
+    p.modificaciones{
+      display: flex;
+      justify-content: center;
+      justify-self: end;
+      width: 33%;
+    }
 }

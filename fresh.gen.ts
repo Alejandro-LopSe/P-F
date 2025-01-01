@@ -3,12 +3,17 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $Api_actCliente from "./routes/Api/actCliente.ts";
+import * as $Api_addArticulo from "./routes/Api/addArticulo.ts";
+import * as $Api_articulos from "./routes/Api/articulos.ts";
 import * as $Api_checkCliente from "./routes/Api/checkCliente.ts";
 import * as $Api_modCliente from "./routes/Api/modCliente.ts";
+import * as $Articulos_index from "./routes/Articulos/index.tsx";
 import * as $Clientes_Activar from "./routes/Clientes/Activar.tsx";
 import * as $Clientes_Añadir from "./routes/Clientes/Añadir.tsx";
 import * as $Clientes_Modificar from "./routes/Clientes/Modificar.tsx";
 import * as $Clientes_index from "./routes/Clientes/index.tsx";
+import * as $Pedidos_Añadir from "./routes/Pedidos/Añadir.tsx";
+import * as $Pedidos_index from "./routes/Pedidos/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
@@ -16,7 +21,9 @@ import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $portal_index from "./routes/portal/index.tsx";
 import * as $ActivacionCliente from "./islands/ActivacionCliente.tsx";
+import * as $AddArticulos from "./islands/AddArticulos.tsx";
 import * as $AddCliente from "./islands/AddCliente.tsx";
+import * as $ArticulosLista from "./islands/ArticulosLista.tsx";
 import * as $Clientemd from "./islands/Clientemd.tsx";
 import * as $Clientes from "./islands/Clientes.tsx";
 import * as $ClientesAct from "./islands/ClientesAct.tsx";
@@ -27,12 +34,17 @@ import type { Manifest } from "$fresh/server.ts";
 const manifest = {
   routes: {
     "./routes/Api/actCliente.ts": $Api_actCliente,
+    "./routes/Api/addArticulo.ts": $Api_addArticulo,
+    "./routes/Api/articulos.ts": $Api_articulos,
     "./routes/Api/checkCliente.ts": $Api_checkCliente,
     "./routes/Api/modCliente.ts": $Api_modCliente,
+    "./routes/Articulos/index.tsx": $Articulos_index,
     "./routes/Clientes/Activar.tsx": $Clientes_Activar,
     "./routes/Clientes/Añadir.tsx": $Clientes_Añadir,
     "./routes/Clientes/Modificar.tsx": $Clientes_Modificar,
     "./routes/Clientes/index.tsx": $Clientes_index,
+    "./routes/Pedidos/Añadir.tsx": $Pedidos_Añadir,
+    "./routes/Pedidos/index.tsx": $Pedidos_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
@@ -42,7 +54,9 @@ const manifest = {
   },
   islands: {
     "./islands/ActivacionCliente.tsx": $ActivacionCliente,
+    "./islands/AddArticulos.tsx": $AddArticulos,
     "./islands/AddCliente.tsx": $AddCliente,
+    "./islands/ArticulosLista.tsx": $ArticulosLista,
     "./islands/Clientemd.tsx": $Clientemd,
     "./islands/Clientes.tsx": $Clientes,
     "./islands/ClientesAct.tsx": $ClientesAct,
