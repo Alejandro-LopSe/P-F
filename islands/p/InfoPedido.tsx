@@ -3,31 +3,24 @@ import { Envio, Estado } from "../../types.ts";
 import { useState } from "preact/hooks";
 import { P } from "../../signals/Pedido.ts";
 import { C } from "../../signals/Cliente.ts";
-export const InfoPedidoAdd: FunctionalComponent = () => {
+export const InfoPedido: FunctionalComponent = () => {
   const [ES, setES] = useState<string>(P.value.estado!);
   const [EN, setEN] = useState<string>(P.value.envio!);
   const [N, setN] = useState<string>(P.value.notas!);
 
-  const add = async () => {
-    const resp = await fetch("/Api/pedido", {
-      method: "POST",
+  const add = () => {
+    const resp = fetch("/Api/pedido", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id_cliente: C.value.id_cliente,
+        id_pedido: P.value.id_pedido,
         estado: ES,
         envio: EN,
-        notas: P.value.notas,
+        notas: N,
       }),
     });
-
-    const data = await resp.text();
-    if (!data) {
-      console.log(data);
-    } else {
-      globalThis.location.href = `/Pedidos/${data}`;
-    }
   };
   return (
     <>

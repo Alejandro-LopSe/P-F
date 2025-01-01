@@ -6,9 +6,18 @@ export const Pedidos: FunctionalComponent<{ Props: Pedido[] }> = (
 ) => {
   return (
     <>
-      {Props.map((pedido) => {
-        return <Pedidovista pedido={pedido}></Pedidovista>;
-      })}
+      <a class="return" href="/">Volver</a>
+      <div class={"clientes"}>
+        <div class={"div"}>
+          <p class={"nombre"}>ID Pedido</p>
+          <p class={"nombre"}>Estado</p>
+          <p class={"nombre"}>Tipo de envio</p>
+          <p class={"nombre"}>Pago Total</p>
+        </div>
+        {Props.map((pedido) => {
+          return <Pedidovista pedido={pedido}></Pedidovista>;
+        })}
+      </div>
     </>
   );
 };

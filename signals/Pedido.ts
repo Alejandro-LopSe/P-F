@@ -1,5 +1,5 @@
 import { signal } from "@preact/signals";
-import { Cliente as Cliente_type, Pedido } from "../types.ts";
+import { Articulo, Envio, Estado, Pedido, Reserva } from "../types.ts";
 
 export const P = signal<Partial<Pedido>>({
   id_pedido: undefined,
@@ -7,9 +7,10 @@ export const P = signal<Partial<Pedido>>({
   ano_fiscal: undefined,
   mes: undefined,
   id_empleado: undefined,
-  estado: undefined,
-  envio: undefined,
+  estado: Estado.PENDIENTE,
+  envio: Envio.RECOGIDA,
   pago_total: undefined,
   notas: undefined,
 });
-console.log("Señal Pedido: ", P);
+
+export const R = signal<Partial<Reserva[]>>([]);

@@ -1,20 +1,31 @@
 import { FunctionalComponent } from "preact";
-import { Articulo } from "../../types.ts";
-export const ReservaLista: FunctionalComponent<{ data: Articulo[] }> = (
-  { data },
-) => {
+import { Reserva } from "../../types.ts";
+import { useEffect, useState } from "preact/hooks";
+import { P, R } from "../../signals/Pedido.ts";
+export const ReservaLista: FunctionalComponent = () => {
+  const [data, setData] = useState<Reserva[]>([]);
+  console.log(data);
+
+  useEffect(() => {
+    const getdata = async () => {
+      const response = await fetch(`/Api/reserva?id=${P.value.id_pedido}`);
+      const data = await response.json();
+      setData(data);
+    };
+    getdata();
+  }, [R.value]);
   return (
     <>
-      {data.map((reserva: Articulo) => {
+      {data.map((reserva: Reserva) => {
         return (
           <div class="div">
-            <p>
+            <p class="nombre">
               {reserva.nombre}
             </p>
-            <p>
+            <p class="cantidad">
               {reserva.cantidad}
             </p>
-            <p>
+            <p class="precio">
               {reserva.precio}€
             </p>
           </div>

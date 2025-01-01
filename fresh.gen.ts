@@ -8,6 +8,8 @@ import * as $Api_articulos from "./routes/Api/articulos.ts";
 import * as $Api_checkCliente from "./routes/Api/checkCliente.ts";
 import * as $Api_getCliente from "./routes/Api/getCliente.ts";
 import * as $Api_modCliente from "./routes/Api/modCliente.ts";
+import * as $Api_pedido from "./routes/Api/pedido.ts";
+import * as $Api_reserva from "./routes/Api/reserva.ts";
 import * as $Articulos_Modificar from "./routes/Articulos/Modificar.tsx";
 import * as $Articulos_index from "./routes/Articulos/index.tsx";
 import * as $Clientes_Activar from "./routes/Clientes/Activar.tsx";
@@ -15,6 +17,7 @@ import * as $Clientes_Añadir from "./routes/Clientes/Añadir.tsx";
 import * as $Clientes_Modificar from "./routes/Clientes/Modificar.tsx";
 import * as $Clientes_index from "./routes/Clientes/index.tsx";
 import * as $Pedidos_Añadir from "./routes/Pedidos/Añadir.tsx";
+import * as $Pedidos_id_ from "./routes/Pedidos/[id].tsx";
 import * as $Pedidos_index from "./routes/Pedidos/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
@@ -26,6 +29,7 @@ import * as $ActivacionCliente from "./islands/ActivacionCliente.tsx";
 import * as $AddArticulos from "./islands/AddArticulos.tsx";
 import * as $AddCliente from "./islands/AddCliente.tsx";
 import * as $AddPedido from "./islands/AddPedido.tsx";
+import * as $AddReservaPedido from "./islands/AddReservaPedido.tsx";
 import * as $ArticulosLista from "./islands/ArticulosLista.tsx";
 import * as $ArticulosListaMod from "./islands/ArticulosListaMod.tsx";
 import * as $Clientemd from "./islands/Clientemd.tsx";
@@ -36,6 +40,7 @@ import * as $FiltroPedidos from "./islands/FiltroPedidos.tsx";
 import * as $Logout from "./islands/Logout.tsx";
 import * as $PeidoVista from "./islands/PeidoVista.tsx";
 import * as $c_InputSelect from "./islands/c/InputSelect.tsx";
+import * as $p_InfoPedido from "./islands/p/InfoPedido.tsx";
 import * as $p_InfoPedidoAdd from "./islands/p/InfoPedidoAdd.tsx";
 import * as $p_ReservasAdd from "./islands/p/ReservasAdd.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -48,6 +53,8 @@ const manifest = {
     "./routes/Api/checkCliente.ts": $Api_checkCliente,
     "./routes/Api/getCliente.ts": $Api_getCliente,
     "./routes/Api/modCliente.ts": $Api_modCliente,
+    "./routes/Api/pedido.ts": $Api_pedido,
+    "./routes/Api/reserva.ts": $Api_reserva,
     "./routes/Articulos/Modificar.tsx": $Articulos_Modificar,
     "./routes/Articulos/index.tsx": $Articulos_index,
     "./routes/Clientes/Activar.tsx": $Clientes_Activar,
@@ -55,6 +62,7 @@ const manifest = {
     "./routes/Clientes/Modificar.tsx": $Clientes_Modificar,
     "./routes/Clientes/index.tsx": $Clientes_index,
     "./routes/Pedidos/Añadir.tsx": $Pedidos_Añadir,
+    "./routes/Pedidos/[id].tsx": $Pedidos_id_,
     "./routes/Pedidos/index.tsx": $Pedidos_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
@@ -68,6 +76,7 @@ const manifest = {
     "./islands/AddArticulos.tsx": $AddArticulos,
     "./islands/AddCliente.tsx": $AddCliente,
     "./islands/AddPedido.tsx": $AddPedido,
+    "./islands/AddReservaPedido.tsx": $AddReservaPedido,
     "./islands/ArticulosLista.tsx": $ArticulosLista,
     "./islands/ArticulosListaMod.tsx": $ArticulosListaMod,
     "./islands/Clientemd.tsx": $Clientemd,
@@ -78,6 +87,7 @@ const manifest = {
     "./islands/Logout.tsx": $Logout,
     "./islands/PeidoVista.tsx": $PeidoVista,
     "./islands/c/InputSelect.tsx": $c_InputSelect,
+    "./islands/p/InfoPedido.tsx": $p_InfoPedido,
     "./islands/p/InfoPedidoAdd.tsx": $p_InfoPedidoAdd,
     "./islands/p/ReservasAdd.tsx": $p_ReservasAdd,
   },

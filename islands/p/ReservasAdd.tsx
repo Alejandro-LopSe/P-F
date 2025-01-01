@@ -1,51 +1,83 @@
 import { FunctionalComponent } from "preact";
-import { Envio, Estado, Pedido } from "../../types.ts";
+import { Articulo, Envio, Estado } from "../../types.ts";
 import { useState } from "preact/hooks";
 import { P } from "../../signals/Pedido.ts";
-import { Cabecerareserva } from "../../components/p/CabeceraReserva.tsx";
-export const ReservasAdd: FunctionalComponent = () => {
-  const [ES, setES] = useState<string>("");
-  const [EN, setEN] = useState<string>("");
-  const [PP, setPP] = useState<number | undefined>(P.value.pago_total);
+import { CabeceraReserva } from "../../components/p/CabeceraReserva.tsx";
+import { ReservaLista } from "../../components/p/ReservaLista.tsx";
+import { R } from "../../signals/Pedido.ts";
+import { Reserva } from "../../types.ts";
+export const ReservasAdd: FunctionalComponent<{ data: Articulo[] }> = (
+  { data },
+) => {
+  const [A, setA] = useState<Articulo>(data[0]);
+  const [Cant, setCant] = useState<number>(1);
+
+  const add = async () => {
+    const resp = await fetch("/Api/reserva", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id_pedido: P.value.id_pedido,
+        id_articulo: A.id_articulo,
+        cantidad: Cant,
+      }),
+    });
+    const resps = await fetch(`/Api/reserva?id=${P.value.id_pedido}`);
+    const newresp: Reserva = await resps.json();
+    R.value = [...R.value, newresp];
+  };
   return (
     <div class="megars">
-      <Cabecerareserva />
+      <CabeceraReserva />
+      <ReservaLista></ReservaLista>
       <div class="div">
         <p>
-          Nombre:{" "}
           <select
-            name="estado"
-            id="estado"
-            value={ES}
+            name="nombre"
+            id="nombre"
+            value={A.id_articulo}
             onChange={(e) => {
-              setES(e.currentTarget.value);
+              const id = parseInt(e.currentTarget.value);
+              const artic = data.find((elem) => {
+                return parseInt(elem.id_articulo) === id;
+              });
+              console.log(artic);
+
+              setA(artic!);
             }}
           >
-            {Object.keys(Estado).map((key: string) => {
-              return <option value={key}>{key}</option>;
+            {data && data.map((art: Articulo) => {
+              return <option value={art.id_articulo}>{art.nombre}</option>;
             })}
           </select>
         </p>
         <p>
           Cantidad:{" "}
-          <select
-            name="envio"
+          <input
+            name="cantidad"
             class="select"
-            id="envio"
-            value={EN}
+            id="cantidad"
+            value={Cant}
             onChange={(e) => {
-              setEN(e.currentTarget.value);
+              setCant(parseInt(e.currentTarget.value));
             }}
           >
-            {Object.keys(Envio).map((key: string) => {
-              return <option value={key}>{key}</option>;
-            })}
-          </select>
+          </input>
         </p>
         <p>
-          Precio: {PP}€
+          Precio: {A.precio * Cant}€
         </p>
       </div>
+      <button
+        type={"button"}
+        onClick={(e) => {
+          add();
+        }}
+      >
+        Añadir
+      </button>
     </div>
   );
 };

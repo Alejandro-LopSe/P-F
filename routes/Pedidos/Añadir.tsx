@@ -1,15 +1,11 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { CustomHeader } from "../../components/CustomHeader.tsx";
-import { addpedido, Cliente, Pedido, state } from "../../types.ts";
+import { addpedido, Cliente, state } from "../../types.ts";
 import { AddPedido } from "../../islands/AddPedido.tsx";
 import { db } from "../../DB/SQLConnection.ts";
-import { C } from "../../signals/Cliente.ts";
 
 export const handler: Handlers<addpedido, state> = {
-  GET: async (_req, _ctx) => {
-    const pedidos_raw = await db!.query(`SELECT * FROM pedidos`);
-    //@ts-expect-errors
-    const pedidos: Pedido[] = pedidos_raw[0];
+  GET: async (_req, ctx) => {
     const clientes_raw = await db!.query(
       `SELECT * FROM clientes where Activo = 1`,
     );
@@ -17,10 +13,10 @@ export const handler: Handlers<addpedido, state> = {
     const clientes: Cliente[] = clientes_raw[0];
 
     const pedidos_con_clientes: addpedido = {
-      pedidos: pedidos,
+      pedidos: [],
       clientes: clientes,
     };
-    return _ctx.render(pedidos_con_clientes);
+    return ctx.render(pedidos_con_clientes);
   },
 };
 

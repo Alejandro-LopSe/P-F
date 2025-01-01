@@ -2,7 +2,9 @@ import { FunctionalComponent } from "preact";
 import { Cliente } from "../../types.ts";
 import { Signal } from "@preact/signals";
 
-export const SingleClient: FunctionalComponent<{ data: Signal<Cliente> }> = (
+export const SingleClient: FunctionalComponent<
+  { data: Signal<Partial<Cliente>> }
+> = (
   { data },
 ) => {
   return (

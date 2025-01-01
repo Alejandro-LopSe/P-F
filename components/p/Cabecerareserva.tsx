@@ -1,5 +1,5 @@
 import { FunctionalComponent } from "preact";
-export const Cabecerareserva: FunctionalComponent = () => {
+export const CabeceraReserva: FunctionalComponent = () => {
   return (
     <div class="div first ">
       <p>

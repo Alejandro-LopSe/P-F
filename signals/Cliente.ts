@@ -1,19 +1,18 @@
 import { signal } from "@preact/signals";
-import { Cliente as Cliente_type } from "../types.ts";
+import { Cliente } from "../types.ts";
 
-export const C = signal<Cliente_type>({
-  id_cliente: 0,
-  Nombre: "",
-  Apellidos: "",
-  DNI: "",
-  Telefono: 0,
-  CP: 0,
-  Direccion: "",
-  Correo: "",
-  Empresa: 0,
-  Fecha_Alta: "",
-  Fecha_Baja: "",
-  Fecha_mod: "",
-  Activo: 1,
+export const C = signal<Partial<Cliente>>({
+  id_cliente: undefined,
+  Nombre: undefined,
+  Apellidos: undefined,
+  DNI: undefined,
+  Telefono: undefined,
+  CP: undefined,
+  Direccion: undefined,
+  Correo: undefined,
+  Empresa: undefined,
+  Fecha_Alta: undefined,
+  Fecha_Baja: undefined,
+  Fecha_mod: undefined,
+  Activo: undefined,
 });
-console.log("Señal Cliente: ", C);
