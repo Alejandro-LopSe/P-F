@@ -9,10 +9,6 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
 ) => {
   const [datan, setData] = useState<Reserva[]>([]);
   const [suma, setSuma] = useState<number>(0);
-  C.value = data.clientes;
-  P.value = data.pedidos;
-  A.value = data.articulos;
-  R.value = datan;
   useEffect(() => {
     const getdata = async () => {
       const response = await fetch(`/Api/reserva?id=${P.value.id_pedido}`);
@@ -22,12 +18,31 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
     getdata();
   }, [R.value, P.value, C.value, A.value]);
 
+  const eliminar = async (id: number) => {
+    const resp = await fetch(
+      `/Api/articulos?id=${id}&id_p=${data.pedidos.id_pedido}`,
+      {
+        method: "DELETE",
+      },
+    );
+    const resp_data: Reserva[] = await resp.json();
+    R.value = resp_data;
+  };
+
   return (
     <div class="lista">
       {datan.map((reserva: Reserva) => {
         return (
           <div class="div">
             <p class="nombre">
+              <button
+                class="eliminar"
+                onClick={(e) => {
+                  eliminar(reserva.id_reserva);
+                }}
+              >
+                -
+              </button>
               {reserva.nombre}
             </p>
             <p class="cantidad">

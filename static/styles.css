@@ -535,18 +535,28 @@ body{
     }
     p.nombre{
       display: flex;
+      margin-top: 0;
+      margin-bottom: 0;
       width: 33%;
-      justify-content: start;
+      justify-content: center;
+      align-items: center;
+      .eliminar{
+        background-color: rgba(255, 0, 0, 0.684);
+        align-self: center;
+        justify-self: center;
+      }
     }
     p.cantidad{
       display: flex;
       width: 33%;
       justify-content: center;
+      align-items: center;
     }
     p.precio{
       display: flex;
       width: 33%;
       justify-content: end;
+      align-items: center;
     }
     
     background-color: rgba(255, 255, 255, 0.682);
@@ -571,3 +581,4 @@ body{
     padding-left: 10px;
   }
 }
+

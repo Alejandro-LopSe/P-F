@@ -32,4 +32,14 @@ export const handler: Handlers = {
 
     return new Response(JSON.stringify(articulos));
   },
+  DELETE: async (_req: Request, _ctx: FreshContext) => {
+    const url = new URL(_req.url);
+    const id = url.searchParams.get("id");
+    const id_p = url.searchParams.get("id_p");
+    await db!.query(`delete from reserva where id_reserva=${id}`);
+    const query = await db!.query(
+      `Select * from reserva where id_pedido=${id_p}`,
+    );
+    return new Response(JSON.stringify(query));
+  },
 };
