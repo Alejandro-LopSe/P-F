@@ -68,6 +68,7 @@ export const InfoPedido: FunctionalComponent<{ data: Reservaspedido }> = (
         <textarea
           type="text"
           name={"notas"}
+          value={data.pedidos.notas}
           onChange={(e) => {
             setN(e.currentTarget.value);
           }}

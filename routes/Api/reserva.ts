@@ -1,4 +1,5 @@
 import { FreshContext, Handlers } from "$fresh/server.ts";
+import { Login } from "../../components/Login.tsx";
 import { db } from "../../DB/SQLConnection.ts";
 import { P } from "../../signals/Pedido.ts";
 import { Reserva } from "../../types.ts";
@@ -29,6 +30,7 @@ export const handler: Handlers = {
       `update pedidos set pago_total = ${body.pago_total}  
       where id_pedido = ${P.value.id_pedido}`,
     );
+    console.log(reserva_raw);
 
     return new Response();
   },

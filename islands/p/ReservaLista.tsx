@@ -1,5 +1,5 @@
 import { FunctionalComponent } from "preact";
-import { Reserva, Reservaspedido } from "../../types.ts";
+import { Pedido, Reserva, Reservaspedido } from "../../types.ts";
 import { useEffect, useState } from "preact/hooks";
 import { P, R } from "../../signals/Pedido.ts";
 import { C } from "../../signals/Cliente.ts";
@@ -9,6 +9,7 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
 ) => {
   const [datan, setData] = useState<Reserva[]>([]);
   const [suma, setSuma] = useState<number>(0);
+
   useEffect(() => {
     const getdata = async () => {
       const response = await fetch(`/Api/reserva?id=${P.value.id_pedido}`);
@@ -18,15 +19,16 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
     getdata();
   }, [R.value, P.value, C.value, A.value]);
 
-  const eliminar = async (id: number) => {
+  const eliminar = async (id: Reserva) => {
     const resp = await fetch(
-      `/Api/articulos?id=${id}&id_p=${data.pedidos.id_pedido}`,
+      `/Api/articulos?id=${id.id_reserva}&id_p=${id.id_pedido}&price=${id.precio}`,
       {
         method: "DELETE",
       },
     );
-    const resp_data: Reserva[] = await resp.json();
-    R.value = resp_data;
+    const resp_data: { p: Pedido; r: Reserva[] } = await resp.json();
+    R.value = resp_data.r;
+    P.value = resp_data.p;
   };
 
   return (
@@ -38,7 +40,7 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
               <button
                 class="eliminar"
                 onClick={(e) => {
-                  eliminar(reserva.id_reserva);
+                  eliminar(reserva);
                 }}
               >
                 -
