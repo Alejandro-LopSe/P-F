@@ -1,11 +1,18 @@
 import { FunctionalComponent } from "preact";
-import { Reserva } from "../../types.ts";
+import { Reserva, Reservaspedido } from "../../types.ts";
 import { useEffect, useState } from "preact/hooks";
 import { P, R } from "../../signals/Pedido.ts";
-export const ReservaLista: FunctionalComponent = () => {
-  const [data, setData] = useState<Reserva[]>([]);
-  console.log(data);
-
+import { C } from "../../signals/Cliente.ts";
+import { A } from "../../signals/Articulos.ts";
+export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
+  { data },
+) => {
+  const [datan, setData] = useState<Reserva[]>([]);
+  const [suma, setSuma] = useState<number>(0);
+  C.value = data.clientes;
+  P.value = data.pedidos;
+  A.value = data.articulos;
+  R.value = datan;
   useEffect(() => {
     const getdata = async () => {
       const response = await fetch(`/Api/reserva?id=${P.value.id_pedido}`);
@@ -13,10 +20,11 @@ export const ReservaLista: FunctionalComponent = () => {
       setData(data);
     };
     getdata();
-  }, [R.value]);
+  }, [R.value, P.value, C.value, A.value]);
+
   return (
-    <>
-      {data.map((reserva: Reserva) => {
+    <div class="lista">
+      {datan.map((reserva: Reserva) => {
         return (
           <div class="div">
             <p class="nombre">
@@ -31,6 +39,6 @@ export const ReservaLista: FunctionalComponent = () => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };

@@ -42,6 +42,7 @@ import * as $PeidoVista from "./islands/PeidoVista.tsx";
 import * as $c_InputSelect from "./islands/c/InputSelect.tsx";
 import * as $p_InfoPedido from "./islands/p/InfoPedido.tsx";
 import * as $p_InfoPedidoAdd from "./islands/p/InfoPedidoAdd.tsx";
+import * as $p_ReservaLista from "./islands/p/ReservaLista.tsx";
 import * as $p_ReservasAdd from "./islands/p/ReservasAdd.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -89,6 +90,7 @@ const manifest = {
     "./islands/c/InputSelect.tsx": $c_InputSelect,
     "./islands/p/InfoPedido.tsx": $p_InfoPedido,
     "./islands/p/InfoPedidoAdd.tsx": $p_InfoPedidoAdd,
+    "./islands/p/ReservaLista.tsx": $p_ReservaLista,
     "./islands/p/ReservasAdd.tsx": $p_ReservasAdd,
   },
   baseUrl: import.meta.url,

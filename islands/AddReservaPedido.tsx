@@ -3,7 +3,7 @@ import { Cliente, Reservaspedido } from "../types.ts";
 import { InputSelect } from "./c/InputSelect.tsx";
 import { SingleClient } from "../components/c/SingleClient.tsx";
 import { C } from "../signals/Cliente.ts";
-import { InfoPedidoAdd } from "./p/InfoPedidoAdd.tsx";
+import { InfoPedido } from "./p/InfoPedido.tsx";
 import { ReservasAdd } from "./p/Reservasadd.tsx";
 import { P } from "../signals/Pedido.ts";
 export const AddReservaPedido: FunctionalComponent<{ data: Reservaspedido }> = (
@@ -21,8 +21,8 @@ export const AddReservaPedido: FunctionalComponent<{ data: Reservaspedido }> = (
         </div>
         <div class="ReservaBloque">
           <p class="title">Pedido</p>
-          <InfoPedidoAdd />
-          <ReservasAdd data={data.articulos}></ReservasAdd>
+          <InfoPedido data={data} />
+          <ReservasAdd data={data}></ReservasAdd>
         </div>
       </div>
     </>

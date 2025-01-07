@@ -42,4 +42,27 @@ export const handler: Handlers<unknown, state> = {
 
     return new Response(`${id}`);
   },
+  PUT: async (req: Request, ctx: FreshContext<state>) => {
+    const body: Pedido = await req.json();
+
+    const today = new Date();
+    if (!body.id_cliente) {
+      return new Response();
+    }
+    const updated = await db!.query(`
+      update pedidos set 
+      estado = '${body.estado}',         
+      envio = '${body.envio}',
+      pago_total= ${body.pago_total},
+            notas = '${body.notas}'
+    `);
+    const ped = await db!.query(`
+      SELECT max(id_pedido) 
+      FROM pedidos c 
+    `);
+    //@ts-expect-errors
+    const id: number = ped[0][0]["max(id_pedido)"];
+
+    return new Response(`${id}`);
+  },
 };

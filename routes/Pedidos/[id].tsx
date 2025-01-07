@@ -4,11 +4,13 @@ import {
   Articulo,
   Cliente,
   Pedido,
+  Reserva,
   Reservaspedido,
   state,
 } from "../../types.ts";
 import { AddReservaPedido } from "../../islands/AddReservaPedido.tsx";
 import { db } from "../../DB/SQLConnection.ts";
+import { R } from "../../signals/Pedido.ts";
 
 export const handler: Handlers<Reservaspedido, state> = {
   GET: async (_req, ctx) => {
@@ -30,16 +32,20 @@ export const handler: Handlers<Reservaspedido, state> = {
         pedidos[0].id_cliente
       }`,
     );
+    //@ts-expect-errors
+    const clientes: Cliente[] = clientes_raw[0];
+
     const articulos_raw = await db!.query(
       `SELECT * FROM articulos`,
     );
     //@ts-expect-errors
     const articulos: Articulo[] = articulos_raw[0];
-    const reservas = await db!.query(
-      `SELECT * FROM pedidos where id_pedido = ${ctx.params.id}`,
-    );
+    const reservas_raw = await db!.query(`
+        select id_reserva ,id_pedido, a.nombre,a.precio, r.cantidad from reserva r
+        left join  articulos a on r.id_articulo = a.id_articulo  
+        where r.id_pedido = ${ctx.params.id}`);
     //@ts-expect-errors
-    const clientes: Cliente[] = clientes_raw[0];
+    const reservas: Reserva[] = reservas_raw[0];
 
     const pedidos_con_clientes: Reservaspedido = {
       pedidos: pedidos[0],
@@ -52,8 +58,6 @@ export const handler: Handlers<Reservaspedido, state> = {
 };
 
 export default function Home(props: PageProps<Reservaspedido, state>) {
-  console.log(2);
-
   return (
     <>
       <CustomHeader state={props.state}></CustomHeader>
