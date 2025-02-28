@@ -100,8 +100,8 @@ export type Reservaspedido = {
 export enum Tamaños {
   L5 = "5 Litros",
   L2 = "2 Litros",
-  L05 = "0.5 Litros",
-  L025 = "0.25 Litros",
+  "L0.5" = "0.5 Litros",
+  "L0.25" = "0.25 Litros",
 }
 export enum Aceite {
   MAD = "Madroñal",

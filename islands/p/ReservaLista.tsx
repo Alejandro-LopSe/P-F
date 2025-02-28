@@ -21,7 +21,9 @@ export const ReservaLista: FunctionalComponent<{ data: Reservaspedido }> = (
 
   const eliminar = async (id: Reserva) => {
     const resp = await fetch(
-      `/Api/articulos?id=${id.id_reserva}&id_p=${id.id_pedido}&price=${id.precio}`,
+      `/Api/articulos?id=${id.id_reserva}&id_p=${id.id_pedido}&price=${
+        id.precio * id.cantidad
+      }`,
       {
         method: "DELETE",
       },
