@@ -63,6 +63,6 @@ export const handler: Handlers<unknown, state> = {
     //@ts-expect-errors
     const id: number = ped[0][0]["max(id_pedido)"];
 
-    return new Response(`${id}`);
+    return new Response(JSON.stringify(body));
   },
 };

@@ -11,9 +11,10 @@ export const handler: Handlers = {
       const contrasena = form.get("contrasena");
 
       const check = await db?.query(
-        `SELECT * FROM usuarios WHERE Nombre='${usuario}' AND Password=${contrasena}`,
+        `SELECT * FROM fabrica.usuarios WHERE Nombre='${usuario}' AND Password=${contrasena}`,
       );
-      console.log("LOGIN 15: ", usuario, contrasena, check![0]);
+      console.log(usuario, contrasena);
+      console.log("LOGIN 15: ", usuario, contrasena);
       //@ts-expect-errora
       const user = check![0][0];
       if (user) {
@@ -23,6 +24,7 @@ export const handler: Handlers = {
           "Set-Cookie": `auth=${token}; Max-Age=3600;`,
           location: "/portal",
         });
+        console.log(user);
 
         ctx.state = { user: user.Nombre, id_usuario: user.id_usuario };
         return new Response("", {

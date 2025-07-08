@@ -3,29 +3,30 @@ import { useErrorBoundary } from "https://esm.sh/v128/preact@10.19.6/hooks/src/i
 import { db } from "../../DB/SQLConnection.ts";
 
 export const handler: Handlers = {
-    GET: async (_req: Request, ctx: FreshContext) => {
-        const clientes_raw = await db!.query("SELECT * FROM clientes;");
-        //@ts-expect-errors
-        const clientes: Cliente[] = clientes_raw[0];
+  GET: async (_req: Request, ctx: FreshContext) => {
+    const clientes_raw = await db!.query("SELECT * FROM clientes;");
+    //@ts-expect-errors
+    const clientes: Cliente[] = clientes_raw[0];
 
-        return new Response(JSON.stringify(clientes));
-    },
-    PUT: async (req: Request, ctx: FreshContext) => {
-        const body = await req.json();
+    return new Response(JSON.stringify(clientes));
+  },
+  PUT: async (req: Request, ctx: FreshContext) => {
+    const body = await req.json();
+    console.log(body);
 
-        const exist = await db!.query(
-            `SELECT 1 FROM clientes WHERE Nombre='${body.nombre}' AND Apellidos='${body.apellidos}';`,
-        );
-        console.log(
-            "EXIST PUT: ",
-            new Date().toString().substring(4, 24),
-        );
-        //@ts-expect-errors
-        if (exist && exist[0].length > 0) {
-            return new Response("Error: el Cliente ya existe.");
-        } else {
-            const exist = await db!.query(
-                `INSERT INTO clientes (Nombre,Apellidos,DNI,Telefono,CP,Direccion,Correo,Empresa,Fecha_Alta,Fecha_Baja,Fecha_mod,Activo)
+    const exist = await db!.query(
+      `SELECT 1 FROM clientes WHERE Nombre='${body.nombre}' AND Apellidos='${body.apellidos}';`,
+    );
+    console.log(
+      "EXIST PUT: ",
+      new Date().toString().substring(4, 24),
+    );
+    //@ts-expect-errors
+    if (exist && exist[0].length > 0) {
+      return new Response("Error: el Cliente ya existe.");
+    } else {
+      const exist = await db!.query(
+        `INSERT INTO clientes (Nombre,Apellidos,DNI,Telefono,CP,Direccion,Correo,Empresa,Fecha_Alta,Fecha_Baja,Fecha_mod,Activo)
                  VALUES (
                  '${body.nombre}', 
                  '${body.apellidos}',
@@ -40,10 +41,10 @@ export const handler: Handlers = {
                  '${new Date().toString().substring(4, 24)}',
                  '${1}');
                 `,
-            );
-            console.log(exist);
+      );
+      console.log(exist);
 
-            return new Response("Listo.");
-        }
-    },
+      return new Response("Listo.");
+    }
+  },
 };

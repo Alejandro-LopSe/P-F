@@ -4,11 +4,12 @@ export type Cliente = {
   Nombre: string;
   Apellidos: string;
   DNI?: string;
-  Telefono?: number;
+  Telefono?: number | string;
   CP?: number;
   Direccion?: string;
   Correo?: string;
   Empresa: number;
+  Empresa_Nombre?: string;
   Fecha_Alta?: string;
   Fecha_Baja?: string;
   Fecha_mod?: string;

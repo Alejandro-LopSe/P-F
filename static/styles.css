@@ -1,4 +1,4 @@
-body{
+body {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -8,9 +8,8 @@ body{
   background-color: rgb(0, 7, 139);
 
   background-size: contain;
-
 }
-.login{
+.login {
   margin-top: 50px;
   align-self: center;
   flex-direction: column;
@@ -19,26 +18,26 @@ body{
   padding: 10px;
   border-style: outset;
   background-color: rgba(255, 255, 255, 0.682);
-  p{
+  p {
     align-self: center;
   }
-  form{
+  form {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    select{
+    select {
       display: flex;
       flex-direction: column;
       padding: 5px;
       margin: 5px;
     }
-    input{
+    input {
       display: flex;
       flex-direction: column;
       padding: 5px;
       margin: 5px;
     }
-    button{
+    button {
       display: flex;
       flex-direction: column;
       padding: 5px;
@@ -46,37 +45,36 @@ body{
     }
   }
 }
-.customheader{
+.customheader {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background-color: rgba(240, 248, 255, 0.615);
   margin: 10px;
 }
-.user{
+.user {
   display: flex;
   flex-direction: row;
-  img{
+  img {
     max-width: 30px;
     max-height: 30px;
     align-self: center;
     border-radius: 120%;
   }
-  
 }
-.formm{
+.formm {
   display: flex;
- 
- align-self: center;
+
+  align-self: center;
 }
-.portal{
+.portal {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin: 20px;
   height: 90dvh;
 }
-.menuportal{
+.menuportal {
   align-self: center;
   display: flex;
   padding: 20px;
@@ -88,21 +86,19 @@ body{
   border-style: solid;
   border-radius: 2px;
   border-color: rgb(68, 68, 68);
-  h1{
+  h1 {
     display: flex;
-    
-    
   }
 }
-.menuclientes{
+.menuclientes {
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-around;
   border-top-style: solid;
-  
-    border-top-color: darkgreen;
-  a{
+
+  border-top-color: darkgreen;
+  a {
     color: black;
     display: flex;
     text-decoration: none;
@@ -110,45 +106,40 @@ body{
     background-color: rgba(30, 103, 46, 0.689);
     border-style: solid;
     border-radius: 2px;
-    border-color: rgb(68, 68, 68);;
+    border-color: rgb(68, 68, 68);
   }
 }
-.clientes{
+.clientes {
   display: flex;
   padding: 20px;
   flex-direction: column;
   margin: 20px;
-
-  padding-left: 5px; 
-  
-  
-  .div{
-    
+  padding-left: 5px;
+  font-size: smaller;
+  .cliente_elem {
     display: flex;
     flex-direction: row;
-    
-    input{
+
+    input {
       margin-left: 5px;
       width: 20px;
     }
-    select{
+    select {
       margin-left: 5px;
       width: 50px;
     }
 
-    p.nombre{
+    p.start {
       display: flex;
       justify-content: start;
-      
       width: 33%;
     }
-    p.pedido{
+    p.pedido {
       display: flex;
       justify-content: center;
-      
       width: 33%;
     }
-    p.modificaciones{
+    p.end {
       display: flex;
       justify-content: end;
       padding-right: 10px;
@@ -167,44 +158,42 @@ body{
   }
   .div.inactivo {
     background-color: rgba(250, 68, 68, 0.724); /* Rojo */
-  }  
+  }
 }
-.clientesmodificar{
+.clientesmodificar {
   display: flex;
   padding: 20px;
   flex-direction: column;
   margin: 20px;
 
-  padding-left: 5px; 
-  
- 
-  div{
-    
+  padding-left: 5px;
+
+  div {
     display: flex;
     flex-direction: row;
-    
-    input{
+
+    input {
       margin-left: 5px;
       width: 20px;
     }
-    select{
+    select {
       margin-left: 5px;
       width: 50px;
     }
 
-    p.nombre{
+    p.nombre {
       display: flex;
       justify-content: start;
-      
+
       width: 30%;
     }
-    p.pedido{
+    p.pedido {
       display: flex;
       justify-content: center;
-      
+
       width: 30%;
     }
-    input.modificaciones{
+    input.modificaciones {
       display: flex;
       justify-content: end;
       padding-right: 10px;
@@ -212,26 +201,26 @@ body{
       align-self: center;
       height: fit-content;
     }
-    
-    input.pedido{
+
+    input.pedido {
       display: flex;
       justify-content: center;
       height: fit-content;
       align-self: center;
       width: 30%;
     }
-    select.pedido{
+    select.pedido {
       display: flex;
       justify-content: center;
       height: fit-content;
       align-self: center;
       width: 10%;
     }
-    p.modificaciones{
+    p.modificaciones {
       display: flex;
       justify-content: end;
       padding-right: 10px;
-      
+
       width: 33%;
     }
     background-color: rgba(255, 255, 255, 0.682);
@@ -242,10 +231,8 @@ body{
 
     padding-left: 10px;
   }
-  
-  
 }
-.return{
+.return {
   display: flex;
   justify-content: center;
   align-self: flex-start;
@@ -259,30 +246,28 @@ body{
   display: flex;
   text-decoration: none;
 }
-.first{
+.first {
   border-style: solid;
   border-radius: 2px;
   border-color: darkgreen;
 }
-.buttonmodificar{
+.buttonmodificar {
   align-self: center;
   color: black;
   display: flex;
   width: fit-content;
-  height:22px;
+  height: 22px;
   text-decoration: none;
   padding-left: 5px;
   padding-right: 5px;
-
-
 }
-.correcto{
+.correcto {
   background-color: darkgreen;
 }
-.incorrecto{
+.incorrecto {
   background-color: rgb(158, 3, 3);
 }
-.cabecera_articulos{
+.cabecera_articulos {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -290,10 +275,10 @@ body{
   margin-left: 10px;
   margin-right: 10px;
   border-style: solid;
-    border-radius: 2px;
-    border-color: rgb(68, 68, 68);
+  border-radius: 2px;
+  border-color: rgb(68, 68, 68);
 }
-.botones_superiores{
+.botones_superiores {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -302,7 +287,7 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: transparent;
-  button{
+  button {
     display: flex;
     justify-content: center;
     align-self: flex-start;
@@ -317,10 +302,10 @@ body{
     text-decoration: none;
   }
 }
-.price{
+.price {
   width: 40px;
 }
-.nuevo_articulo{
+.nuevo_articulo {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -328,42 +313,42 @@ body{
   margin-left: 10px;
   margin-right: 10px;
   border-style: solid;
-    border-radius: 2px;
-    border-color: rgb(68, 68, 68);
-    p.nombre{
-      display: flex;
-      justify-content: center;
-      justify-self: start;
-      width: 33%;
-    }
-    p.pedido{
-      display: flex;
-      justify-content: center;
-      justify-self: center;
-      width: 33%;
-    }
-    p.modificaciones{
-      display: flex;
-      justify-content: center;
-      justify-self: end;
-      width: 33%;
-    }
+  border-radius: 2px;
+  border-color: rgb(68, 68, 68);
+  p.nombre {
+    display: flex;
+    justify-content: center;
+    justify-self: start;
+    width: 33%;
+  }
+  p.pedido {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    width: 33%;
+  }
+  p.modificaciones {
+    display: flex;
+    justify-content: center;
+    justify-self: end;
+    width: 33%;
+  }
 }
-.cliente{
+.cliente {
   display: flex;
   padding: 20px;
   flex-direction: column;
   width: 25%;
   margin: 20px;
-  padding-left: 5px; 
+  padding-left: 5px;
   background-color: rgba(240, 248, 255, 0.615);
   margin-left: 10px;
   margin-right: 10px;
   border-style: solid;
-    border-radius: 2px;
-    border-color: rgb(68, 68, 68);
-  
-  .title{
+  border-radius: 2px;
+  border-color: rgb(68, 68, 68);
+
+  .title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -373,38 +358,37 @@ body{
     border-color: rgb(68, 68, 68);
     padding: 5px;
     margin: 5px;
-    p{
+    p {
       display: flex;
       flex-direction: column;
       padding: 5px;
       margin: 5px;
     }
-    
   }
-  .inpselecft{
+  .inpselecft {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    margin: 5px;  
+    margin: 5px;
     border-bottom: 3px solid rgb(68, 68, 68);
-    
   }
 }
-.ReservaBloque{
+
+.ReservaBloque {
   display: flex;
   padding: 20px;
   flex-direction: column;
   width: 75%;
   margin: 20px;
-  padding-left: 5px; 
+  padding-left: 5px;
   background-color: rgba(240, 248, 255, 0.615);
   margin-left: 10px;
   margin-right: 10px;
   border-style: solid;
-    border-radius: 2px;
-    border-color: rgb(68, 68, 68);
-  
-  .title{
+  border-radius: 2px;
+  border-color: rgb(68, 68, 68);
+
+  .title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -414,18 +398,18 @@ body{
     border-radius: 2px;
     border-color: rgb(68, 68, 68);
     padding: 5px;
-    margin: 5px; 
+    margin: 5px;
   }
-  .info{
+  .info {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 5px;
     margin: 5px;
-    p{
+    p {
       display: flex;
       flex-direction: row;
-      
+
       justify-content: space-around;
       width: 33%;
       padding: 5px;
@@ -433,15 +417,15 @@ body{
     }
     border-bottom: 3px solid rgb(68, 68, 68);
   }
-  .notas{
+  .notas {
     display: flex;
     flex-direction: column;
     padding: 5px;
     margin: 5px;
     height: 100%;
-    textarea{
+    textarea {
       text-align: start;
-      text-wrap: normal; ;
+      text-wrap: normal;
       height: 100%;
       text-align: start;
       white-space: normal; /* Permite que el texto se ajuste automáticamente */
@@ -451,23 +435,22 @@ body{
     }
     border-bottom: 3px solid rgb(68, 68, 68);
   }
-  .inpselecft{
+  .inpselecft {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    margin: 5px;  
+    margin: 5px;
     border-bottom: 3px solid rgb(68, 68, 68);
-    
   }
 }
-.Reserva{
+.Reserva {
   display: flex;
   padding: 0px;
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  padding-left: 5px; 
-  .Filas{
+  padding-left: 5px;
+  .Filas {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -477,43 +460,37 @@ body{
     border-radius: 2px;
     border-color: rgb(68, 68, 68);
     padding: 5px;
-    margin: 5px; 
+    margin: 5px;
   }
-  
-  .inpselecft{
+
+  .inpselecft {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    margin: 5px;  
+    margin: 5px;
     border-bottom: 3px solid rgb(68, 68, 68);
-    
   }
 }
-.Pedido{
+.Pedido {
   display: flex;
   padding: 20px;
   flex-direction: row;
 
   margin: 20px;
-  padding-left: 5px; 
+  padding-left: 5px;
   background-color: rgba(240, 248, 255, 0.615);
   margin-left: 10px;
   margin-right: 10px;
   border-style: solid;
-    border-radius: 2px;
-    border-color: rgb(68, 68, 68);
-  
+  border-radius: 2px;
+  border-color: rgb(68, 68, 68);
 }
 
-
-
-
-
-.megars{
+.megars {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  .lista{
+  .lista {
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -521,44 +498,44 @@ body{
     overflow-x: auto;
     height: 33dvh;
   }
-  .div{
+  .div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-right: 10px;
-    
-    .div.first{
+
+    .div.first {
       border-top-style: solid;
     }
-    .div.add{
+    .div.add {
       border-top-style: solid;
     }
-    p.nombre{
+    p.nombre {
       display: flex;
       margin-top: 0;
       margin-bottom: 0;
       width: 33%;
       justify-content: center;
       align-items: center;
-      .eliminar{
+      .eliminar {
         background-color: rgba(255, 0, 0, 0.684);
         align-self: center;
         justify-self: center;
       }
     }
-    p.cantidad{
+    p.cantidad {
       display: flex;
       width: 33%;
       justify-content: center;
       align-items: center;
     }
-    p.precio{
+    p.precio {
       display: flex;
       width: 33%;
       justify-content: end;
       align-items: center;
     }
-    
+
     background-color: rgba(255, 255, 255, 0.682);
     border-bottom-style: solid;
     border-left-style: solid;
@@ -568,7 +545,7 @@ body{
     padding-left: 10px;
   }
 
-  button{
+  button {
     display: flex;
     justify-content: start;
     width: fit-content;
@@ -581,4 +558,78 @@ body{
     padding-left: 10px;
   }
 }
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+.Lista_Clientes {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  margin: 20px;
+  padding-left: 5px;
+  font-size: smaller;
+}
+.activo {
+  background-color: rgba(129, 248, 131, 0.663); /* Verde */
+}
+.inactivo {
+  background-color: rgba(250, 68, 68, 0.724); /* Rojo */
+}
+.Filtro_Clientes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  input {
+    margin-left: 5px;
+    width: 20px;
+  }
+  p.start {
+    display: flex;
+    justify-content: start;
+    width: 33%;
+  }
+  p.pedido {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+  }
+  p.end {
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    width: 33%;
+  }
+  background-color: rgba(255, 255, 255, 0.682);
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: rgb(68, 68, 68);
 
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.cliente_elem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p.start {
+    display: flex;
+    justify-content: start;
+    width: 33%;
+  }
+  p.pedido {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+  }
+  p.end {
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    width: 33%;
+  }
+  background-color: rgba(255, 255, 255, 0.682);
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: rgb(68, 68, 68);
+  padding-left: 10px;
+}

@@ -25,6 +25,8 @@ export const InfoPedido: FunctionalComponent<{ data: Reservaspedido }> = (
 
   useEffect(() => {
   }, [R.value, P.value, C.value, A.value]);
+  console.log(data.pedidos);
+
   return (
     <>
       <div class="info">
@@ -68,7 +70,7 @@ export const InfoPedido: FunctionalComponent<{ data: Reservaspedido }> = (
         <textarea
           type="text"
           name={"notas"}
-          value={data.pedidos.notas}
+          value={N}
           onChange={(e) => {
             setN(e.currentTarget.value);
           }}

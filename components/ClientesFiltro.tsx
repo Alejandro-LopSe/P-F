@@ -77,15 +77,19 @@ export const ClientesFiltro: FunctionalComponent<
           return (
             <>
               {cliente["Activo"] === 1 && (
-                <div class="div" id={`${cliente.Nombre}${cliente.Apellidos}`}>
-                  <p class="nombre">
+                <div
+                  class="cliente_elem"
+                  id={`${cliente.Nombre}${cliente.Apellidos}`}
+                >
+                  <p class="start">
                     {`${cliente.Nombre} ${cliente.Apellidos}`}
                   </p>
                   <p class="pedido">{cliente.DNI}</p>
                   <p class="pedido">
-                    {!cliente.Telefono ||
-                        cliente.Telefono < 100000000
+                    {!cliente.Telefono || cliente.Telefono == 0
                       ? "-"
+                      : cliente.Telefono == ""
+                      ? "El Tlf es incorrecto"
                       : cliente.Telefono}
                   </p>
                   <p class="pedido">
@@ -97,7 +101,7 @@ export const ClientesFiltro: FunctionalComponent<
                   <p class="pedido">
                     {!cliente.Correo ? "" : cliente.Correo}
                   </p>
-                  <p class="modificaciones">
+                  <p class="end">
                     {cliente.Empresa ? "Si   " : "No   "}
                   </p>
                 </div>

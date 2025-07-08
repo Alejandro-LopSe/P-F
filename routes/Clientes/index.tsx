@@ -6,6 +6,8 @@ import { Cliente, state } from "../../types.ts";
 
 export const handler: Handlers<Cliente[], state> = {
     GET: async (_req: Request, ctx: FreshContext<state, Cliente[]>) => {
+        const c = new URL(_req.url);
+        "/dasda?id=1"
         const clientes_raw = await db!.query("SELECT * FROM clientes;");
         //@ts-expect-errors
         const clientes: Cliente[] = clientes_raw[0];

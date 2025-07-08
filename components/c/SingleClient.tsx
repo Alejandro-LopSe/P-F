@@ -17,7 +17,7 @@ export const SingleClient: FunctionalComponent<
         <p>Correo: {data.value.Correo}</p>
         <p>DNI: {data.value.DNI}</p>
         <p>CP: {data.value.CP}</p>
-        <p>¿Es Empresa?: {data.value.Empresa ? "Si" : "No"}</p>
+        <p>Empresa: {data.value.Empresa_Nombre}</p>
       </div>
     </>
   );

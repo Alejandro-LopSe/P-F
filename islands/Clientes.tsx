@@ -1,28 +1,46 @@
 import { FunctionalComponent } from "preact";
 import { Cliente, state } from "../types.ts";
-import { ClientesFiltro } from "../components/ClientesFiltro.tsx";
 import { useState } from "preact/hooks";
+import { Clientes_all } from "../components/c/Clientes_all.tsx";
+import { useSignal } from "@preact/signals";
 
 export const Clientes: FunctionalComponent<
   { props: { state: state; data: Cliente[] } }
 > = (
   { props },
 ) => {
-  const [nombre, nombremod] = useState<string>("");
-  const [dni, dnimod] = useState<string>("");
-  const [tlf, tlfmod] = useState<string>("");
-  const [cp, cpmod] = useState<string>("");
-  const [dir, dirmod] = useState<string>("");
-  const [correo, correomod] = useState<string>("");
-  const [empresa, empresamod] = useState<string>("10");
-  console.log("rendering");
+  const [nombre, nombremod] = useState<string | undefined>(undefined);
+  const [dni, dnimod] = useState<string | undefined>(undefined);
+  const [tlf, tlfmod] = useState<string | undefined>(undefined);
+  const [cp, cpmod] = useState<string | undefined>(undefined);
+  const [dir, dirmod] = useState<string | undefined>(undefined);
+  const [correo, correomod] = useState<string | undefined>(undefined);
+  const [empresa, empresamod] = useState<string | undefined>(undefined);
+  const filtros = useSignal<{
+    Nombre: string | undefined;
+    DNI: string | undefined;
+    Telefono: string | undefined;
+    CP: string | undefined;
+    Direccion: string | undefined;
+    Correo: string | undefined;
+    Empresa: string | undefined;
+  }>({
+    Nombre: nombre,
+    DNI: dni,
+    Telefono: tlf,
+    CP: cp,
+    Direccion: dir,
+    Correo: correo,
+    Empresa: empresa,
+  });
+
+  console.log("rendering", filtros);
 
   return (
-    <div class="clientes">
+    <div class="Lista_Clientes">
       <a class="return" href="/">Volver</a>
-
-      <div class="div first">
-        <p class="nombre">
+      <div class="Filtro_Clientes">
+        <p class="start">
           NOMBRE{" "}
           <input
             type="text"
@@ -32,29 +50,11 @@ export const Clientes: FunctionalComponent<
           />
         </p>
         <p class="pedido">
-          DNI{" "}
-          <input
-            type="text"
-            onInput={(e) => {
-              dnimod(e.currentTarget.value);
-            }}
-          />
-        </p>
-        <p class="pedido">
           TLF{" "}
           <input
             type="text"
             onInput={(e) => {
               tlfmod(e.currentTarget.value);
-            }}
-          />
-        </p>
-        <p class="pedido">
-          CP{" "}
-          <input
-            type="text"
-            onInput={(e) => {
-              cpmod(e.currentTarget.value);
             }}
           />
         </p>
@@ -76,7 +76,25 @@ export const Clientes: FunctionalComponent<
             }}
           />
         </p>
-        <p class="modificaciones">
+        <p class="pedido">
+          DNI{" "}
+          <input
+            type="text"
+            onInput={(e) => {
+              dnimod(e.currentTarget.value);
+            }}
+          />
+        </p>
+        <p class="pedido">
+          CP{" "}
+          <input
+            type="text"
+            onInput={(e) => {
+              cpmod(e.currentTarget.value);
+            }}
+          />
+        </p>
+        <p class="end">
           EMPRESA
 
           <select
@@ -91,20 +109,11 @@ export const Clientes: FunctionalComponent<
           </select>
         </p>
       </div>
-      <ClientesFiltro
-        props={props}
-        filtros={{
-          Nombre: nombre,
-          DNI: dni,
-          Telefono: tlf,
-          CP: cp,
-          Direccion: dir,
-          Correo: correo,
-
-          Empresa: empresa,
-        }}
+      <Clientes_all
+        data={props.data}
+        filtros={filtros}
       >
-      </ClientesFiltro>
+      </Clientes_all>
     </div>
   );
 };
