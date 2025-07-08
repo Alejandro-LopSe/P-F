@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "preact";
 import { Cliente, state } from "../types.ts";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { Clientes_all } from "../components/c/Clientes_all.tsx";
 import { useSignal } from "@preact/signals";
 
@@ -33,6 +33,17 @@ export const Clientes: FunctionalComponent<
     Correo: correo,
     Empresa: empresa,
   });
+  useEffect(() => {
+    filtros.value = {
+      Nombre: nombre,
+      DNI: dni,
+      Telefono: tlf,
+      CP: cp,
+      Direccion: dir,
+      Correo: correo,
+      Empresa: empresa,
+    };
+  }, [nombre, dni, tlf, cp, dir, correo, empresa]);
 
   console.log("rendering", filtros);
 

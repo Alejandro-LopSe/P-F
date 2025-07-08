@@ -52,6 +52,16 @@ export type User = {
 
 /*------------------------------------------TYPES TS-----------------------------------------------*/
 
+export type cliente_filtro = {
+  Nombre: string | undefined;
+  DNI: string | undefined;
+  Telefono: string | undefined;
+  CP: string | undefined;
+  Direccion: string | undefined;
+  Correo: string | undefined;
+  Empresa: string | undefined;
+};
+
 export type mysql_Cliente = {
   results: Cliente[];
   flieds: [];

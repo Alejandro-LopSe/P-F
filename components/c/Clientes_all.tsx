@@ -1,6 +1,7 @@
 import { FunctionalComponent } from "preact";
 import { Cliente } from "../../types.ts";
 import { Signal } from "@preact/signals";
+import { check_cliente } from "../../funciones.ts";
 
 export const Clientes_all: FunctionalComponent<
   {
@@ -18,8 +19,8 @@ export const Clientes_all: FunctionalComponent<
 > = (
   { data, filtros },
 ) => {
-  if (!Object.values(filtros).every((v) => v === "")) {
-    console.log("Filtrado de clientes:", filtros);
+  if (Object.values(filtros.value).every((v) => v === undefined || v === "")) {
+    console.log("Clientes:", filtros);
     return (
       <>
         {data.map((c: Cliente) => {
@@ -39,20 +40,16 @@ export const Clientes_all: FunctionalComponent<
     );
   } else {
     const filtrado = data.reduce((arr: Cliente[], cliente: Cliente) => {
-      if (
-        cliente.Nombre.includes(filtros.value.Nombre || "") ||
-        cliente.Apellidos.includes(filtros.value.Nombre || "") ||
-        cliente.DNI?.includes(filtros.value.DNI || "") ||
-        (cliente.Telefono?.toString().includes(filtros.value.Telefono || "")) ||
-        cliente.CP?.toString().includes(filtros.value.CP || "") ||
-        cliente.Direccion?.includes(filtros.value.Direccion || "") ||
-        cliente.Correo?.includes(filtros.value.Correo || "")
-      ) {
+      const check = check_cliente(cliente, filtros.value);
+      if (check) {
+        console.log("Cliente filtrado:", cliente, check);
         return [...arr, cliente];
       } else {
         return arr;
       }
     }, []);
+    console.log("Filtrado de clientes:", filtrado);
+
     return (
       <>
         {filtrado.map((c: Cliente) => {
